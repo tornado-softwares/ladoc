@@ -1,0 +1,23 @@
+{
+  "name": "@ladoc/vite",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./lib/constants": "./dist/lib/constants.js",
+    "./lib/plugin": "./dist/lib/plugin.js",
+    "./types/import": "./dist/types/import.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@ladoc/core": "workspace:*",
+    "vite": "^8.1.0"
+  }
+}

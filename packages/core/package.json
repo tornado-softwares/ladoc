@@ -1,0 +1,22 @@
+{
+  "name": "@ladoc/core",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./configuration": "./dist/configuration/index.js",
+    "./routing": "./dist/routing/index.js",
+    "./shared": "./dist/shared/index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  }
+}

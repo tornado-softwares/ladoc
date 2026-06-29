@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "baseUrl": ".",
+    "rootDirs": [".", "./.react-router/types"],
+    "types": ["@ladoc/vite"],
+  },
+  "include": ["src/**/*", "**/.server/**/*", "**/.client/**/*", ".react-router/types/**/*"],
+}

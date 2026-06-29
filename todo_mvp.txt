@@ -1,0 +1,19 @@
+Markdown Parsing Features
+    MDX 3
+    Syntax Highlighting
+    latex
+
+Documentation Routing Features
+    i18n
+    Intuitive nested routing
+
+Documentation UI
+    Dark/light mode
+    Easy custom theme built in components, helpers
+    TOC
+
+Framework feature
+    static rendering
+    framework agnostic
+    composable framework
+    open source forever

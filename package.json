@@ -1,0 +1,19 @@
+{
+  "name": "ladoc",
+  "scripts": {
+    "build": "bunx bun-workspaces run build --dep-order --output-style=prefixed",
+    "dev": "bunx bun-workspaces run dev"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "bun-workspaces": "^1.11.2",
+    "tsdown": "^0.22.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "workspaces": [
+    "./packages/*",
+    "./examples/*"
+  ]
+}

@@ -1,0 +1,44 @@
+Markdown Parsing Features
+    Image Optimizations
+    Links Preload
+    Syntax Highlighting
+    MDX 3
+    mermaid
+    latex
+
+Documentation Routing Features
+    i18n
+    Intuitive nested routing
+    SEO sitemaps
+    AI llm txt, etc
+
+Documentation UI
+    a11y accesibility
+    Full-text zero config search
+    Dark/light mode
+    RTL
+    Easy custom theme built in components, helpers
+    custom css
+    tailwind css
+    TOC
+    Page icons
+    RSC
+
+
+Framework feature
+    static rendering
+    framework agnostic
+    composable framework
+    open source forever
+
+
+Features voir en dernier
+    cms / remote content
+    tsdoc / openapi
+
+
+
+
+https://docs-template.nuxt.dev/
+fumadocs
+nextra
