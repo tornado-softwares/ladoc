@@ -1,1 +1,22 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@utility prose {
+  --tw-prose-body: var(--color-primary);
+  --tw-prose-headings: var(--color-primary);
+  --tw-prose-bold: var(--color-primary);
+  --tw-prose-quote-borders: var(--color-slate-300);
+  --tw-prose-quotes: var(--color-muted-foreground);
+  --tw-prose-code: var(--color-primary);
+
+  code {
+    &::before,
+    &::after {
+      display: none;
+    }
+    text-wrap: nowrap;
+  }
+
+  blockquote {
+    font-weight: 400;
+  }
+}

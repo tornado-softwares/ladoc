@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { get_pages_map } from './utils';
 import { get_tree } from '@ladoc/core/routing';
+import { get_markdown_html } from '@ladoc/core/markdown';
 
 export function plugin(): Plugin {
   return {
@@ -48,9 +49,9 @@ export function plugin(): Plugin {
             this.addWatchFile(file_path);
             CONFIGURATION.logger.debug('watching', '[', this.environment.name, ']', file_path);
           }
-
-          const content = fs.readFileSync(file_path);
-          return `export default \`${content}\``;
+          const content = fs.readFileSync(file_path, 'utf-8');
+          const html = await get_markdown_html(content);
+          return `export default \`${html}\``;
         } else {
           return `export default \`This page doesnt exist.\``;
         }

@@ -177,17 +177,17 @@ var $_default$1 = UNSAFE_withComponentProps(function Page() {
 //#region virtual:ladoc:pages
 var virtual_ladoc_pages_default = {
 	"en": {
-		"/": () => import("./assets/_index-FvIjS8xR.js"),
-		"/folder1": () => import("./assets/_index-CmuRpG8t.js"),
-		"/folder1/blabla": () => import("./assets/blabla-Dgi8QzY_.js"),
-		"/folder1/folder2/xxxx": () => import("./assets/xxxx-B9im93BS.js"),
-		"/test": () => import("./assets/test-iPNrk0Z0.js")
+		"/": () => import("./assets/_index-bP_98z9p.js"),
+		"/folder1": () => import("./assets/_index-Dd6FUgKS.js"),
+		"/folder1/blabla": () => import("./assets/blabla-4OVsTlT-.js"),
+		"/folder1/folder2/xxxx": () => import("./assets/xxxx-DA_cjE1N.js"),
+		"/test": () => import("./assets/test-BRWKkRaz.js")
 	},
 	"fr": {
-		"/folder1": () => import("./assets/_index-B27qxRkr.js"),
-		"/folder1/blabla": () => import("./assets/blabla-CJqAh8T4.js"),
-		"/folder1/folder2/xxxx": () => import("./assets/xxxx-X5a5gVGH.js"),
-		"/test": () => import("./assets/test-LP_j2fzM.js")
+		"/folder1": () => import("./assets/_index-BjkUj5Ps.js"),
+		"/folder1/blabla": () => import("./assets/blabla-KjtYWunW.js"),
+		"/folder1/folder2/xxxx": () => import("./assets/xxxx-Cxb-SMJo.js"),
+		"/test": () => import("./assets/test-DsocmGgu.js")
 	}
 };
 //#endregion
@@ -13947,9 +13947,9 @@ function PageContent({ language, path, page }) {
 				className: "bg-emerald-600 rounded-sm text-white px-2 py-1 text-sm",
 				children: path
 			})]
-		}), /* @__PURE__ */ jsx("pre", {
-			className: "",
-			children: value.default
+		}), /* @__PURE__ */ jsx("div", {
+			className: "prose",
+			dangerouslySetInnerHTML: { __html: value.default }
 		})]
 	});
 }
@@ -14010,9 +14010,9 @@ var _index_default = UNSAFE_withComponentProps(function Home() {
 										children: [/* @__PURE__ */ jsx("p", {
 											className: "bg-emerald-100 rounded-t-sm p-1 text-xs",
 											children: language_page
-										}), /* @__PURE__ */ jsx("pre", {
-											className: "size-full bg-black text-white w-auto rounded-b-sm font-mono p-2 text-xs",
-											children: value.default
+										}), /* @__PURE__ */ jsx("div", {
+											dangerouslySetInnerHTML: { __html: value.default },
+											className: "size-full border w-auto rounded-b-sm  p-2 text-xs prose"
 										})]
 									});
 								}
@@ -14056,14 +14056,14 @@ var server_manifest_default = {
 			"hasClientMiddleware": false,
 			"hasDefaultExport": true,
 			"hasErrorBoundary": true,
-			"module": "/assets/root-Cfmcsazs.js",
+			"module": "/assets/root-DM8PIzgg.js",
 			"imports": [
 				"/assets/jsx-runtime-WgHwu3Oc.js",
 				"/assets/components-CLbfDAG6.js",
 				"/assets/preload-helper-CZgWQFsJ.js",
 				"/assets/error-boundary-D0jX8Rjr.js"
 			],
-			"css": ["/assets/root-CxBqawEq.css"],
+			"css": ["/assets/root-ZZzSOR7g.css"],
 			"clientActionModule": void 0,
 			"clientLoaderModule": void 0,
 			"clientMiddlewareModule": void 0,
@@ -14124,11 +14124,11 @@ var server_manifest_default = {
 			"hasClientMiddleware": false,
 			"hasDefaultExport": true,
 			"hasErrorBoundary": true,
-			"module": "/assets/_-D5Egvxqg.js",
+			"module": "/assets/_-CKRWIYz4.js",
 			"imports": [
 				"/assets/jsx-runtime-WgHwu3Oc.js",
 				"/assets/error-boundary-D0jX8Rjr.js",
-				"/assets/virtual_ladoc_pages-Mq5bU59m.js",
+				"/assets/virtual_ladoc_pages-D3W6812k.js",
 				"/assets/preload-helper-CZgWQFsJ.js"
 			],
 			"css": [],
@@ -14150,10 +14150,10 @@ var server_manifest_default = {
 			"hasClientMiddleware": false,
 			"hasDefaultExport": true,
 			"hasErrorBoundary": false,
-			"module": "/assets/_index-C0AACY1s.js",
+			"module": "/assets/_index-CdFpTNfN.js",
 			"imports": [
 				"/assets/jsx-runtime-WgHwu3Oc.js",
-				"/assets/virtual_ladoc_pages-Mq5bU59m.js",
+				"/assets/virtual_ladoc_pages-D3W6812k.js",
 				"/assets/preload-helper-CZgWQFsJ.js"
 			],
 			"css": [],
@@ -14184,8 +14184,8 @@ var server_manifest_default = {
 			"hydrateFallbackModule": void 0
 		}
 	},
-	"url": "/assets/manifest-70bd2443.js",
-	"version": "70bd2443",
+	"url": "/assets/manifest-1a682bfe.js",
+	"version": "1a682bfe",
 	"sri": void 0
 };
 //#endregion

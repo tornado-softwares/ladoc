@@ -8,7 +8,7 @@ export function PageContent({ language, path, page }: { language: string; path: 
         <p className="bg-emerald-600 rounded-sm text-white px-2 py-1 text-sm">{language}</p>
         <p className="bg-emerald-600 rounded-sm text-white px-2 py-1 text-sm">{path}</p>
       </div>
-      <pre className="">{value.default}</pre>
+      <div className={'prose'} dangerouslySetInnerHTML={{ __html: value.default }} />
     </div>
   );
 }
