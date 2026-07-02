@@ -3,6 +3,7 @@ import type { File, Object } from '../types/structure';
 import { parse_segments } from './utils/segments';
 import { explore } from './utils/explore';
 import { naming } from './utils/constants';
+import { get_configuration } from '@/configuration';
 
 const object_to_page = (object: Object, level: number = 0, parent_layout: boolean = false, base_level = true): Page[] => {
   if (object.type == 'file') {
@@ -33,7 +34,7 @@ const object_to_page = (object: Object, level: number = 0, parent_layout: boolea
   }
 };
 
-export const get_page_tree = (path: string) => {
+export const get_tree = (path: string) => {
   const tree = explore({
     path: path,
     extensions: ['.mdx'],
@@ -44,15 +45,5 @@ export const get_page_tree = (path: string) => {
   return object_to_page(tree);
 };
 
-export const get_pages = (tree: Page[]): Content[] =>
-  tree.flatMap((page) => ('file' in page ? [page] : page.children ? get_pages(page.children) : []));
-
-/*
-
-
--> FOLDER1
-  -> INDEX.MDX  : "/FOLDER1"
-  -> BLABLA.MDX : "/FOLDER1/BLABLA"
-  -> FOLDER2
-    -> XXXX.MDX : "/FOLDER1/FOLDER2/XXXX"
-*/
+export const get_tree_pages = (tree: Page[]): Content[] =>
+  tree.flatMap((page) => ('file' in page ? [page] : page.children ? get_tree_pages(page.children) : []));

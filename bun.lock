@@ -16,7 +16,8 @@
     "examples/react-router": {
       "name": "@ladoc/react-router-example",
       "dependencies": {
-        "@ladoc/vite": "*",
+        "@ladoc/server": "workspace:*",
+        "@ladoc/vite": "workspace:*",
         "@react-router/dev": "^8.0.1",
         "@react-router/node": "^8.0.1",
         "@react-router/serve": "^8.0.1",
@@ -35,8 +36,14 @@
         "@types/react-dom": "^19.2.3",
       },
       "peerDependencies": {
-        "@ladoc/core": "*",
         "typescript": "^5",
+      },
+    },
+    "packages/client": {
+      "name": "@ladoc/client",
+      "version": "0.0.1",
+      "dependencies": {
+        "@ladoc/core": "workspace:*",
       },
     },
     "packages/core": {
@@ -50,11 +57,18 @@
       "name": "@ladoc/react",
       "version": "0.0.1",
     },
+    "packages/server": {
+      "name": "@ladoc/server",
+      "version": "0.0.1",
+      "dependencies": {
+        "@ladoc/core": "workspace:*",
+      },
+    },
     "packages/vite": {
       "name": "@ladoc/vite",
       "version": "0.0.1",
       "dependencies": {
-        "@ladoc/core": "*",
+        "@ladoc/core": "workspace:*",
         "vite": "^8.1.0",
       },
     },
@@ -132,11 +146,15 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
+    "@ladoc/client": ["@ladoc/client@workspace:packages/client"],
+
     "@ladoc/core": ["@ladoc/core@workspace:packages/core"],
 
     "@ladoc/react": ["@ladoc/react@workspace:packages/react"],
 
     "@ladoc/react-router-example": ["@ladoc/react-router-example@workspace:examples/react-router"],
+
+    "@ladoc/server": ["@ladoc/server@workspace:packages/server"],
 
     "@ladoc/vite": ["@ladoc/vite@workspace:packages/vite"],
 

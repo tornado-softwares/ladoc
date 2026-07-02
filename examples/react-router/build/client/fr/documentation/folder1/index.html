@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Website</title><meta name="description" content="This is a React Router website."/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="modulepreload" href="/assets/entry.client-C-w87cuD.js"/><link rel="modulepreload" href="/assets/jsx-runtime-WgHwu3Oc.js"/><link rel="modulepreload" href="/assets/components-CLbfDAG6.js"/><link rel="modulepreload" href="/assets/preload-helper-CZgWQFsJ.js"/><link rel="modulepreload" href="/assets/root-Cfmcsazs.js"/><link rel="modulepreload" href="/assets/error-boundary-D0jX8Rjr.js"/><link rel="modulepreload" href="/assets/_layout-wLQFQ5dK.js"/><link rel="modulepreload" href="/assets/_-D5Egvxqg.js"/><link rel="modulepreload" href="/assets/virtual_ladoc_pages-Mq5bU59m.js"/><link rel="stylesheet" href="/assets/root-CxBqawEq.css"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope&amp;display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrona&amp;display=swap"/></head><body><main class="min-h-screen relative"><div class="max-w-337.5 w-full mx-auto mt-20 flex flex-col items-start gap-2"><!--$?--><template id="B:0"></template><p>Loading.</p><!--/$--></div></main><script>((storageKey, restoreKey) => {
+		if (!window.history.state || !window.history.state.key) {
+			let key = Math.random().toString(32).slice(2);
+			window.history.replaceState({ key }, "");
+		}
+		try {
+			let storedY = JSON.parse(sessionStorage.getItem(storageKey) || "{}")[restoreKey || window.history.state.key];
+			if (typeof storedY === "number") window.scrollTo(0, storedY);
+		} catch (error) {
+			console.error(error);
+			sessionStorage.removeItem(storageKey);
+		}
+	})("react-router-scroll-positions", null)</script><script>window.__reactRouterContext = {"basename":"/","future":{"unstable_optimizeDeps":false},"routeDiscovery":{"mode":"lazy","manifestPath":"/__manifest"},"ssr":true,"isSpaMode":false};window.__reactRouterContext.stream = new ReadableStream({start(controller){window.__reactRouterContext.streamController = controller;}}).pipeThrough(new TextEncoderStream());</script><script type="module" async="">;
+import * as route0 from "/assets/root-Cfmcsazs.js";
+import * as route1 from "/assets/_layout-wLQFQ5dK.js";
+import * as route2 from "/assets/_-D5Egvxqg.js";
+  window.__reactRouterManifest = {
+  "entry": {
+    "module": "/assets/entry.client-C-w87cuD.js",
+    "imports": [
+      "/assets/jsx-runtime-WgHwu3Oc.js",
+      "/assets/components-CLbfDAG6.js",
+      "/assets/preload-helper-CZgWQFsJ.js"
+    ],
+    "css": []
+  },
+  "routes": {
+    "root": {
+      "id": "root",
+      "path": "",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasDefaultExport": true,
+      "hasErrorBoundary": true,
+      "module": "/assets/root-Cfmcsazs.js",
+      "imports": [
+        "/assets/jsx-runtime-WgHwu3Oc.js",
+        "/assets/components-CLbfDAG6.js",
+        "/assets/preload-helper-CZgWQFsJ.js",
+        "/assets/error-boundary-D0jX8Rjr.js"
+      ],
+      "css": [
+        "/assets/root-CxBqawEq.css"
+      ]
+    },
+    "routes/_layout": {
+      "id": "routes/_layout",
+      "parentId": "root",
+      "path": "",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasDefaultExport": true,
+      "hasErrorBoundary": false,
+      "module": "/assets/_layout-wLQFQ5dK.js",
+      "imports": [
+        "/assets/jsx-runtime-WgHwu3Oc.js"
+      ],
+      "css": []
+    },
+    "routes/$lang/documentation/$": {
+      "id": "routes/$lang/documentation/$",
+      "parentId": "routes/_layout",
+      "path": ":lang/documentation/*",
+      "hasAction": false,
+      "hasLoader": true,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasDefaultExport": true,
+      "hasErrorBoundary": true,
+      "module": "/assets/_-D5Egvxqg.js",
+      "imports": [
+        "/assets/jsx-runtime-WgHwu3Oc.js",
+        "/assets/error-boundary-D0jX8Rjr.js",
+        "/assets/virtual_ladoc_pages-Mq5bU59m.js",
+        "/assets/preload-helper-CZgWQFsJ.js"
+      ],
+      "css": []
+    },
+    "routes/_index": {
+      "id": "routes/_index",
+      "parentId": "routes/_layout",
+      "index": true,
+      "hasAction": false,
+      "hasLoader": false,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasDefaultExport": true,
+      "hasErrorBoundary": false,
+      "module": "/assets/_index-C0AACY1s.js",
+      "imports": [
+        "/assets/jsx-runtime-WgHwu3Oc.js",
+        "/assets/virtual_ladoc_pages-Mq5bU59m.js",
+        "/assets/preload-helper-CZgWQFsJ.js"
+      ],
+      "css": []
+    },
+    "routes/$": {
+      "id": "routes/$",
+      "parentId": "routes/_layout",
+      "path": "*",
+      "hasAction": false,
+      "hasLoader": true,
+      "hasClientAction": false,
+      "hasClientLoader": false,
+      "hasClientMiddleware": false,
+      "hasDefaultExport": true,
+      "hasErrorBoundary": true,
+      "module": "/assets/_-DxYIqTGu.js",
+      "imports": [
+        "/assets/jsx-runtime-WgHwu3Oc.js",
+        "/assets/error-boundary-D0jX8Rjr.js"
+      ],
+      "css": []
+    }
+  },
+  "url": "/assets/manifest-70bd2443.js",
+  "version": "70bd2443"
+};
+  window.__reactRouterRouteModules = {"root":route0,"routes/_layout":route1,"routes/$lang/documentation/$":route2};
+
+import("/assets/entry.client-C-w87cuD.js");</script><!--$?--><template id="B:1"></template><!--/$--><script id="_R_">requestAnimationFrame(function(){$RT=performance.now()});</script><div hidden id="S:1"><script>window.__reactRouterContext.streamController.enqueue("[{\"_1\":2,\"_3\":-5,\"_4\":-5},\"loaderData\",{\"_5\":6},\"actionData\",\"errors\",\"routes/$lang/documentation/$\",{\"_7\":8,\"_9\":10},\"language\",\"fr\",\"path\",\"/folder1\"]\n");</script><!--$?--><template id="B:2"></template><!--/$--></div><script>$RB=[];$RV=function(a){$RT=performance.now();for(var b=0;b<a.length;b+=2){var c=a[b],e=a[b+1];null!==e.parentNode&&e.parentNode.removeChild(e);var f=c.parentNode;if(f){var g=c.previousSibling,h=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d||"/&"===d)if(0===h)break;else h--;else"$"!==d&&"$?"!==d&&"$~"!==d&&"$!"!==d&&"&"!==d||h++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;e.firstChild;)f.insertBefore(e.firstChild,c);g.data="$";g._reactRetry&&requestAnimationFrame(g._reactRetry)}}a.length=0};
+$RC=function(a,b){if(b=document.getElementById(b))(a=document.getElementById(a))?(a.previousSibling.data="$~",$RB.push(a,b),2===$RB.length&&("number"!==typeof $RT?requestAnimationFrame($RV.bind(null,$RB)):(a=performance.now(),setTimeout($RV.bind(null,$RB),2300>a&&2E3<a?2300-a:$RT+300-a)))):b.parentNode.removeChild(b)};$RC("B:1","S:1")</script><div hidden id="S:2"><script>window.__reactRouterContext.streamController.close();</script></div><script>$RC("B:2","S:2")</script><div hidden id="S:0"><div class="flex flex-col items-start size-full gap-2"><div class="inline-flex gap-2"><p class="bg-emerald-600 rounded-sm text-white px-2 py-1 text-sm">fr</p><p class="bg-emerald-600 rounded-sm text-white px-2 py-1 text-sm">/folder1</p></div><pre class="">Haha
+
+Petit test ! folder 1
+</pre></div></div><script>$RC("B:0","S:0")</script></body></html>

@@ -14,10 +14,10 @@
     "@types/react-dom": "^19.2.3"
   },
   "peerDependencies": {
-    "@ladoc/core": "*",
     "typescript": "^5"
   },
   "dependencies": {
+    "@ladoc/server": "workspace:*",
     "@ladoc/vite": "workspace:*",
     "@react-router/dev": "^8.0.1",
     "@react-router/node": "^8.0.1",

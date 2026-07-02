@@ -1,12 +1,9 @@
-import z from "zod";
-import { directories_schema } from "./directories";
+import z from 'zod';
 
 export const languages_schema = z
   .object({
-    directories: directories_schema,
+    default: z.string(),
   })
   .default({
-    directories: {
-      default: "./documentation",
-    },
+    default: 'en',
   });

@@ -1,5 +1,7 @@
 declare type Markdown = string;
-declare type Pages = Record<string, () => Promise<Markdown>>;
+declare type MarkdownModule = { default: Markdown };
+declare type LazyMarkdown = () => Promise<MarkdownModule>;
+declare type Pages = Record<string, Record<string, LazyMarkdown>> & { default: Record<string, LazyMarkdown> };
 
 // @ts-expect-error
 declare module 'virtual:ladoc:markdown:*' {

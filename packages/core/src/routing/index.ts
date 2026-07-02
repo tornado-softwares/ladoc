@@ -1,1 +1,2 @@
-export { get_page_tree, get_pages } from './lib/tree';
+export { get_tree, get_tree_pages } from './lib/tree';
+export { resolve_language_directory } from './lib/directories';

@@ -7,12 +7,5 @@ type DeepPartial<T> = T extends object
     }
   : T;
 
-export type configuration_type = z.infer<typeof configuration_schema>;
-export type partial_configuration_type = DeepPartial<configuration_type>;
-
-export interface logger {
-  debug(msg: string, ...args: unknown[]): void;
-  info(msg: string, ...args: unknown[]): void;
-  warn(msg: string, ...args: unknown[]): void;
-  error(msg: string, ...args: unknown[]): void;
-}
+export type parsed_ladoc_configuration = z.infer<typeof configuration_schema>;
+export type partial_ladoc_configuration = DeepPartial<parsed_ladoc_configuration>;
