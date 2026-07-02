@@ -1,1 +1,0 @@
-import{r as e,s as t,t as n}from"./jsx-runtime-WgHwu3Oc.js";var r=n();function i({}){return[{title:`Website`},{name:`description`,content:`This is a React Router website.`}]}var a=t(function(){return(0,r.jsx)(`main`,{className:`min-h-screen relative`,children:(0,r.jsx)(e,{})})});export{a as default,i as meta};
