@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Await } from 'react-router';
-
+import '@/assets/styles/markdown.css';
 import pages from 'virtual:ladoc:pages';
 const languages = Object.keys(pages);
 
@@ -23,10 +23,7 @@ export default function Home() {
                         return (
                           <div className="flex flex-col size-full">
                             <p className="bg-emerald-100 rounded-t-sm p-1 text-xs">{language_page}</p>
-                            <div
-                              dangerouslySetInnerHTML={{ __html: value.default }}
-                              className="size-full border w-auto rounded-b-sm  p-2 text-xs prose"
-                            />
+                            <div dangerouslySetInnerHTML={{ __html: value.default }} className="p-4 ladoc-markdown" />
                           </div>
                         );
                       }}

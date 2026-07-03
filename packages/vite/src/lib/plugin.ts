@@ -51,7 +51,8 @@ export function plugin(): Plugin {
           }
           const content = fs.readFileSync(file_path, 'utf-8');
           const html = await get_markdown_html(content);
-          return `export default \`${html}\``;
+          return `export default ${JSON.stringify(html)};`;
+          return `export default \`${JSON.stringify(html)}\``;
         } else {
           return `export default \`This page doesnt exist.\``;
         }

@@ -15,5 +15,9 @@ export const markdown_engines: engines = {
 
 export const get_markdown_html: parser = async (content: string) => {
   const configuration = await get_configuration();
-  return markdown_engines[configuration.markdown.engine](content);
+  const start = Date.now();
+  const html = markdown_engines[configuration.markdown.engine](content);
+  const end = Date.now();
+  configuration.logger.debug('parsed with', configuration.markdown.engine, 'in', end - start, 'ms');
+  return html;
 };
