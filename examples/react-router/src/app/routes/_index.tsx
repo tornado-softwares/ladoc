@@ -23,7 +23,7 @@ export default function Home() {
                         return (
                           <div className="flex flex-col size-full">
                             <p className="bg-emerald-100 rounded-t-sm p-1 text-xs">{language_page}</p>
-                            <div dangerouslySetInnerHTML={{ __html: value.default }} className="p-4 ladoc-markdown" />
+                            <div dangerouslySetInnerHTML={{ __html: value.default.html }} className="p-4 ladoc-markdown" />
                           </div>
                         );
                       }}

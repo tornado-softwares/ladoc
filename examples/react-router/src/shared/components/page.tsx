@@ -9,7 +9,8 @@ export function PageContent({ language, path, page }: { language: string; path: 
         <p className="bg-emerald-600 rounded-sm text-white px-2 py-1 text-sm">{language}</p>
         <p className="bg-emerald-600 rounded-sm text-white px-2 py-1 text-sm">{path}</p>
       </div>
-      <div className="ladoc-markdown p-4 " dangerouslySetInnerHTML={{ __html: value.default }} />
+      <pre className=" p-4 ">{JSON.stringify(value.default.frontmatter, null, 2)}</pre>
+      <div className="ladoc-markdown p-4 " dangerouslySetInnerHTML={{ __html: value.default.html }} />
     </div>
   );
 }

@@ -1,4 +1,7 @@
-declare type Markdown = string;
+declare type Markdown = {
+  frontmatter: any;
+  html: string;
+};
 declare type MarkdownModule = { default: Markdown };
 declare type LazyMarkdown = () => Promise<MarkdownModule>;
 declare type Pages = Record<string, Record<string, LazyMarkdown>> & { default: Record<string, LazyMarkdown> };
