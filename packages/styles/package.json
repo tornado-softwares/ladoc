@@ -1,0 +1,14 @@
+{
+  "name": "@ladoc/styles",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "bun ./src/scripts/build.ts"
+  },
+  "exports": {
+    "./variables.css": "./src/variables.css",
+    "./markdown.css": "./src/markdown.css",
+    "./components/documentation/sidebar.module.css": "./src/components/documentation/sidebar.module.css",
+    "./components/button.module.css": "./src/components/button.module.css"
+  }
+}

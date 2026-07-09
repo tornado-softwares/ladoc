@@ -9,6 +9,6 @@ export default {
     fr: './src/assets/content/fr',
   },
   markdown: {
-    engine: 'marked',
+    engine: 'markdown-it',
   },
 } satisfies partial_ladoc_configuration;

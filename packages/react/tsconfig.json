@@ -1,15 +1,14 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "paths": {
       "@/*": ["./src/*"],
     },
-    "declaration": true,
-    "declarationMap": true,
-    "noEmit": false,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "declarationMap": false,
+    "declaration": false,
+    "noEmit": true,
+    "types": ["@ladoc/vite/types/import"],
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"],

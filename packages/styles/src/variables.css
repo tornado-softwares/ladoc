@@ -1,0 +1,43 @@
+:root {
+  --_ladoc-color-text-primary: var(--ladoc-color-text-primary, #7bc193);
+  --_ladoc-color-text-underline: var(--ladoc-color-text-underline, #36483c);
+  --_ladoc-color-text: var(--ladoc-color-text, #fff);
+  --_ladoc-color-background: var(--ladoc-color-background, #191919);
+  --_ladoc-color-card: var(--ladoc-color-card, #0d0d0d);
+  --_ladoc-color-muted-foreground: var(--ladoc-color-muted-foreground, #737373);
+  --_ladoc-color-muted: var(--ladoc-color-muted, #2a2a2a);
+  --_ladoc-color-blockquote-border: var(--ladoc-color-blockquote-border, #009161);
+
+  --_ladoc-font-base: var(--ladoc-font-base, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
+  --_ladoc-font-mono: var(--ladoc-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
+
+  --_ladoc-font-weight-heading: var(--ladoc-font-weight-heading, 600);
+
+  --_ladoc-font-size-h1: var(--ladoc-font-size-h1, 2em);
+  --_ladoc-font-size-h2: var(--ladoc-font-size-h2, 1.6em);
+  --_ladoc-font-size-h3: var(--ladoc-font-size-h3, 1.3em);
+
+  --_ladoc-line-height: var(--ladoc-line-height, 1.6);
+  --_ladoc-line-height-heading: var(--ladoc-line-height-heading, 1.25);
+
+  --_ladoc-margin-heading: var(--ladoc-margin-heading, 1.2em 0 0.6em);
+  --_ladoc-margin-paragraph: var(--ladoc-margin-paragraph, 0 0 1em);
+  --_ladoc-margin-list: var(--ladoc-margin-list, 0 0 1em 2em);
+  --_ladoc-margin-li: var(--ladoc-margin-li, 0.3em 0);
+  --_ladoc-margin-li-before: var(--ladoc-margin-li-before, 4px);
+  --_ladoc-margin-hr: var(--ladoc-margin-hr, 2em);
+  --_ladoc-margin-blockquote: var(--ladoc-margin-blockquote, 0 0 1em);
+
+  --_ladoc-padding-pre: var(--ladoc-padding-pre, 1em);
+  --_ladoc-padding-code: var(--ladoc-padding-code, 0.2em 0.4em);
+  --_ladoc-padding-blockquote: var(--ladoc-padding-blockquote, 0.5em 1em);
+  --_ladoc-padding-root: var(--ladoc-padding-root, 1.1em);
+
+  --_ladoc-radius: var(--ladoc-radius, 6px);
+  --_ladoc-hr-height: var(--ladoc-hr-height, 1px);
+  --_ladoc-underline-height: var(--ladoc-underline-height, 1px);
+  --_ladoc-blockquote-border-width: var(--ladoc-blockquote-border-width, 4px);
+
+  --_ladoc-transition-duration: var(--ladoc-transition-duration, 200ms);
+  --_ladoc-transition-timing: var(--ladoc-transition-timing, ease);
+}

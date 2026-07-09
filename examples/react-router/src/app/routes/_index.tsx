@@ -1,8 +1,8 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Await } from 'react-router';
-import '@/assets/styles/markdown.css';
 import pages from 'virtual:ladoc:pages';
 const languages = Object.keys(pages);
+import '@ladoc/styles/markdown.css';
 
 export default function Home() {
   return (

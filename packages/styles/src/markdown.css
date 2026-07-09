@@ -1,0 +1,116 @@
+@import './variables.css';
+
+.ladoc-markdown {
+  color: var(--_ladoc-color-text);
+  padding: var(--_ladoc-padding-root);
+  background: var(--_ladoc-color-background);
+  font-family: var(--_ladoc-font-base);
+  line-height: var(--_ladoc-line-height);
+  width: 100%;
+}
+
+.ladoc-markdown hr:not(.no-ladoc-markdown *) {
+  display: block;
+  height: var(--_ladoc-hr-height);
+  border: 0;
+  border-top: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
+  margin: var(--_ladoc-margin-hr) 0;
+  padding: 0;
+}
+
+.ladoc-markdown h1:not(.no-ladoc-markdown *),
+.ladoc-markdown h2:not(.no-ladoc-markdown *),
+.ladoc-markdown h3:not(.no-ladoc-markdown *),
+.ladoc-markdown h4:not(.no-ladoc-markdown *) {
+  font-weight: var(--_ladoc-font-weight-heading);
+  line-height: var(--_ladoc-line-height-heading);
+  margin: var(--_ladoc-margin-heading);
+}
+
+.ladoc-markdown h1:not(.no-ladoc-markdown *) {
+  font-size: var(--_ladoc-font-size-h1);
+}
+
+.ladoc-markdown h2:not(.no-ladoc-markdown *) {
+  font-size: var(--_ladoc-font-size-h2);
+}
+
+.ladoc-markdown h3:not(.no-ladoc-markdown *) {
+  font-size: var(--_ladoc-font-size-h3);
+}
+
+.ladoc-markdown p:not(.no-ladoc-markdown *) {
+  margin: var(--_ladoc-margin-paragraph);
+}
+
+.ladoc-markdown a:not(.no-ladoc-markdown *) {
+  color: var(--_ladoc-color-text-primary);
+  border-bottom: var(--_ladoc-underline-height) solid var(--_ladoc-color-text-underline);
+  transition:
+    border-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
+    transform var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+}
+
+.ladoc-markdown a:not(.no-ladoc-markdown *):hover {
+  border-bottom-color: var(--_ladoc-color-text-primary);
+}
+
+.ladoc-markdown ul:not(.no-ladoc-markdown *),
+.ladoc-markdown ol:not(.no-ladoc-markdown *) {
+  margin: var(--_ladoc-margin-list);
+}
+
+.ladoc-markdown ul li:not(.no-ladoc-markdown *) {
+  list-style-type: disc;
+}
+
+.ladoc-markdown ol li:not(.no-ladoc-markdown *) {
+  list-style-type: decimal;
+}
+
+.ladoc-markdown li:not(.no-ladoc-markdown *) {
+  list-style-position: outside;
+  margin: var(--_ladoc-margin-li);
+}
+
+.ladoc-markdown ol li:not(.no-ladoc-markdown *)::marker,
+.ladoc-markdown ul li:not(.no-ladoc-markdown *)::marker {
+  color: var(--_ladoc-color-muted-foreground);
+}
+
+.ladoc-markdown li:not(.no-ladoc-markdown *)::before {
+  content: '';
+  margin-inline: var(--_ladoc-margin-li-before);
+}
+
+.ladoc-markdown p:not(.no-ladoc-markdown *) > pre {
+  background: var(--_ladoc-color-card);
+  padding: var(--_ladoc-padding-pre);
+  overflow: auto;
+  border-radius: var(--_ladoc-radius);
+  border: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
+}
+
+.ladoc-markdown code:not(.no-ladoc-markdown *) {
+  font-family: var(--_ladoc-font-mono);
+  background: var(--_ladoc-color-card);
+  padding: var(--_ladoc-padding-code);
+  border-radius: var(--_ladoc-radius);
+}
+
+.ladoc-markdown blockquote:not(.no-ladoc-markdown *) {
+  margin: var(--_ladoc-margin-blockquote);
+  padding: var(--_ladoc-padding-blockquote);
+  background: color-mix(in srgb, var(--_ladoc-color-card) 30%, transparent);
+  border-left: var(--_ladoc-blockquote-border-width) solid var(--_ladoc-color-blockquote-border);
+  color: var(--_ladoc-color-foreground);
+}
+
+.ladoc-markdown blockquote:not(.no-ladoc-markdown *) p:last-child {
+  margin-bottom: 0;
+}
+
+.no-ladoc-markdown {
+  all: revert;
+  box-sizing: border-box;
+}

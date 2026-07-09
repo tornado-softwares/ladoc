@@ -1,0 +1,49 @@
+@import '../variables.css';
+
+.default {
+  color: var(--_ladoc-color-text);
+  background-color: var(--_ladoc-color-card);
+  border-radius: var(--_ladoc-radius);
+  padding: 3px 10px;
+
+  font-family: var(--_ladoc-font-base);
+  border: 1px solid var(--_ladoc-color-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
+    border-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+}
+
+.default:hover {
+  background-color: var(--_ladoc-color-muted);
+  border-color: var(--_ladoc-color-text-underline);
+}
+
+.secondary {
+  color: var(--_ladoc-color-background);
+  background-color: var(--_ladoc-color-text-primary);
+  border-radius: var(--_ladoc-radius);
+  padding: 3px 10px;
+
+  font-family: var(--_ladoc-font-base);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: filter var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+}
+
+.secondary:hover {
+  filter: brightness(1.1);
+}
+
+.default:active,
+.secondary:active {
+  transform: scale(0.98);
+}
