@@ -1,0 +1,13 @@
+import type { BaseHTMLAttributes } from 'react';
+import styles from '@ladoc/styles/components/documentation/sidebar/content.module.css';
+import clsx from 'clsx';
+
+export interface DocumentationSidebarContentProps extends BaseHTMLAttributes<HTMLDivElement> {}
+
+export function DocumentationSidebarContent({ className, children, ...props }: DocumentationSidebarContentProps) {
+  return (
+    <div className={clsx(styles['default'], className)} {...props}>
+      {children}
+    </div>
+  );
+}

@@ -1,0 +1,16 @@
+@import '../../../variables.css';
+
+.default {
+  width: var(--_ladoc-sidebar-width);
+  height: calc(100vh - var(--_ladoc-header-height));
+
+  position: sticky;
+  top: var(--_ladoc-header-height);
+  color: var(--_ladoc-color-text);
+
+  border-right: 1px solid var(--_ladoc-color-muted);
+
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}

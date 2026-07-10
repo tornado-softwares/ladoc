@@ -3,7 +3,7 @@ import pages from 'virtual:ladoc:pages';
 import type { Route } from './+types/$';
 import { get_page } from '@ladoc/server';
 import { Suspense } from 'react';
-import { DocumentationContent } from '@ladoc/react';
+import { PageContent } from '@ladoc/react';
 
 export async function loader({ params }: Route.LoaderArgs) {
   const page = await get_page('/' + params['*']);
@@ -15,7 +15,7 @@ export default function Page({ loaderData: { language, path } }: Route.Component
   const page = pages[language][path]();
   return (
     <Suspense fallback={<p>Loading.</p>}>
-      <DocumentationContent page={page} />
+      <PageContent page={page} />
     </Suspense>
   );
 }

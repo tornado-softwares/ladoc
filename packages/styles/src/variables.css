@@ -1,12 +1,12 @@
 :root {
   --_ladoc-color-text-primary: var(--ladoc-color-text-primary, #7bc193);
-  --_ladoc-color-text-underline: var(--ladoc-color-text-underline, #36483c);
-  --_ladoc-color-text: var(--ladoc-color-text, #fff);
-  --_ladoc-color-background: var(--ladoc-color-background, #191919);
-  --_ladoc-color-card: var(--ladoc-color-card, #0d0d0d);
-  --_ladoc-color-muted-foreground: var(--ladoc-color-muted-foreground, #737373);
-  --_ladoc-color-muted: var(--ladoc-color-muted, #2a2a2a);
-  --_ladoc-color-blockquote-border: var(--ladoc-color-blockquote-border, #009161);
+  --_ladoc-color-text-underline: var(--ladoc-color-text-underline, #3d5245);
+  --_ladoc-color-text: var(--ladoc-color-text, #eaeaea);
+  --_ladoc-color-background: var(--ladoc-color-background, #171717);
+  --_ladoc-color-card: var(--ladoc-color-card, #212121);
+  --_ladoc-color-muted-foreground: var(--ladoc-color-muted-foreground, #9a9a9a);
+  --_ladoc-color-muted: var(--ladoc-color-muted, #2c2c2c);
+  --_ladoc-color-blockquote-border: var(--ladoc-color-blockquote-border, #4fae7b);
 
   --_ladoc-font-base: var(--ladoc-font-base, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
   --_ladoc-font-mono: var(--ladoc-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
@@ -20,6 +20,10 @@
   --_ladoc-line-height: var(--ladoc-line-height, 1.6);
   --_ladoc-line-height-heading: var(--ladoc-line-height-heading, 1.25);
 
+  --_ladoc-header-height: var(--ladoc-header-height, 3.5em);
+  --_ladoc-sidebar-width: var(--ladoc-sidebar-width, clamp(300px, 25vw, 450px));
+  --_ladoc-toc-width: var(--ladoc-toc-width, 350px);
+
   --_ladoc-margin-heading: var(--ladoc-margin-heading, 1.2em 0 0.6em);
   --_ladoc-margin-paragraph: var(--ladoc-margin-paragraph, 0 0 1em);
   --_ladoc-margin-list: var(--ladoc-margin-list, 0 0 1em 2em);
@@ -31,7 +35,7 @@
   --_ladoc-padding-pre: var(--ladoc-padding-pre, 1em);
   --_ladoc-padding-code: var(--ladoc-padding-code, 0.2em 0.4em);
   --_ladoc-padding-blockquote: var(--ladoc-padding-blockquote, 0.5em 1em);
-  --_ladoc-padding-root: var(--ladoc-padding-root, 1.1em);
+  --_ladoc-padding-root: var(--ladoc-padding-root, 1.5em 4em);
 
   --_ladoc-radius: var(--ladoc-radius, 6px);
   --_ladoc-hr-height: var(--ladoc-hr-height, 1px);

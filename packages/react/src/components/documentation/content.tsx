@@ -1,12 +1,13 @@
-import { use } from 'react';
-import '@ladoc/styles/markdown.css';
+import type { BaseHTMLAttributes } from 'react';
+import styles from '@ladoc/styles/components/documentation/content.module.css';
+import clsx from 'clsx';
 
-export function DocumentationContent({ page }: { page: Promise<MarkdownModule> }) {
-  const value = use(page);
+export interface DocumentationContentProps extends BaseHTMLAttributes<HTMLDivElement> {}
+
+export function DocumentationContent({ className, children, ...props }: DocumentationContentProps) {
   return (
-    <div className="ladoc-markdown">
-      <pre className=" p-4 ">{JSON.stringify(value.default.frontmatter, null, 2)}</pre>
-      <div dangerouslySetInnerHTML={{ __html: value.default.html }} />
+    <div className={clsx(styles['default'], className)} {...props}>
+      {children}
     </div>
   );
 }

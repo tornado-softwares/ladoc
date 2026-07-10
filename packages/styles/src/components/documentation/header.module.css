@@ -1,0 +1,11 @@
+@import '../../variables.css';
+
+.default {
+  color: var(--_ladoc-color-text);
+  height: var(--_ladoc-header-height);
+  background-color: color-mix(in srgb, var(--_ladoc-color-card) 30%, transparent);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--_ladoc-color-muted);
+  position: sticky;
+  top: 0;
+}

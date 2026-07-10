@@ -1,0 +1,6 @@
+@import '../../../variables.css';
+
+.default {
+  color: var(--_ladoc-color-text);
+  width: 100%;
+}

@@ -1,6 +1,7 @@
 import { parse as parse_yaml } from 'yaml';
-import { frontmatter_schema, type frontmatter } from './schemas/frontmatter';
+import { frontmatter_schema } from './schemas/frontmatter';
 import z from 'zod';
+import type { frontmatter } from '../types/frontmatter';
 
 export const extract_frontmatter = (input: string): { frontmatter: frontmatter; markdown: string } => {
   const lines = input.split('\n');

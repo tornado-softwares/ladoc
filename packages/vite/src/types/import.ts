@@ -1,19 +1,23 @@
-declare type Markdown = {
-  frontmatter: any;
-  html: string;
-};
-declare type MarkdownModule = { default: Markdown };
-declare type LazyMarkdown = () => Promise<MarkdownModule>;
-declare type Pages = Record<string, Record<string, LazyMarkdown>> & { default: Record<string, LazyMarkdown> };
+import type { frontmatter } from '@ladoc/core/markdown';
 
-// @ts-expect-error
-declare module 'virtual:ladoc:markdown:*' {
-  const content: Markdown;
-  export default content;
-}
+declare global {
+  type Markdown = {
+    frontmatter: frontmatter;
+    html: string;
+  };
+  type MarkdownModule = { default: Markdown };
+  type LazyMarkdown = () => Promise<MarkdownModule>;
+  type Pages = Record<string, Record<string, LazyMarkdown>> & { default: Record<string, LazyMarkdown> };
 
-// @ts-expect-error
-declare module 'virtual:ladoc:pages' {
-  const content: Pages;
-  export default content;
+  // @ts-expect-error
+  module 'virtual:ladoc:markdown:*' {
+    const content: Markdown;
+    export default content;
+  }
+
+  // @ts-expect-error
+  module 'virtual:ladoc:pages' {
+    const content: Pages;
+    export default content;
+  }
 }

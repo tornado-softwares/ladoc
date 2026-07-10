@@ -6,5 +6,3 @@ export const frontmatter_schema = z.object({
   order: z.number().optional(),
   icon: z.string().optional(),
 });
-
-export type frontmatter = z.infer<typeof frontmatter_schema>;

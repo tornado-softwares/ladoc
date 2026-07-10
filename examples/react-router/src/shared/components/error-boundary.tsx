@@ -15,7 +15,7 @@ export function ErrorBoundary() {
   }
 
   return (
-    <main className="max-w-337.5 w-full mx-auto mt-20 p-8 space-y-2">
+    <main className="max-w-337.5 w-full mx-auto p-8 space-y-2">
       <h1 className="text-2xl">{message}</h1>
       <p className="text-lg">{details}</p>
       {stack && (

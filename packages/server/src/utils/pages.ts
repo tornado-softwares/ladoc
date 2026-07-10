@@ -1,5 +1,6 @@
 import { get_configuration } from '@ladoc/core/configuration';
 import { get_tree, get_tree_pages, resolve_language_directory } from '@ladoc/core/routing';
+import fs from 'fs';
 
 export const get_pages = async (_language?: string) => {
   const { language, directory } = await resolve_language_directory(_language);
@@ -13,6 +14,16 @@ export const get_page = async (path: string, _language?: string) => {
   for (const page of pages) {
     if (page.path == path) {
       return { language, path: page.path };
+    }
+  }
+};
+
+export const get_raw_page = async (path: string, _language?: string) => {
+  const page = await get_page(path, _language);
+  if (page) {
+    if (fs.existsSync(page.path)) {
+      const content = fs.readFileSync(page.path, 'utf-8');
+      return content;
     }
   }
 };
