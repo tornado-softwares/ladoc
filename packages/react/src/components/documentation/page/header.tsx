@@ -1,11 +1,23 @@
-import type { BaseHTMLAttributes } from 'react';
-import styles from '@ladoc/styles/components/documentation/header.module.css';
+import { use, type BaseHTMLAttributes } from 'react';
+//import styles from '@ladoc/styles/components/Page/header.module.css';
 import clsx from 'clsx';
+import { Button } from '../../button';
 
-export interface DocumentationHeaderProps extends BaseHTMLAttributes<HTMLDivElement> {
-  frontmatter: Markdown['frontmatter'];
+export interface PageHeaderProps extends BaseHTMLAttributes<HTMLDivElement> {
+  page: Promise<MarkdownModule>;
 }
 
-export function DocumentationHeader({ className, children, ...props }: DocumentationHeaderProps) {
-  return <div className={clsx(styles['default'], className)} {...props}></div>;
+export function PageHeader({ page, className, children, ...props }: PageHeaderProps) {
+  const value = use(page);
+  return (
+    <div className={clsx(/*styles['default'],*/ className, 'ladoc-markdown')} {...props}>
+      <h1>{value.default.frontmatter.title}</h1>
+      <p>{value.default.frontmatter.description}</p>
+      <div style={{ gap: '15px', display: 'flex' }}>
+        <Button variant="secondary">View as markdown</Button>
+        <Button>Copy for LLM</Button>
+      </div>
+      <hr />
+    </div>
+  );
 }

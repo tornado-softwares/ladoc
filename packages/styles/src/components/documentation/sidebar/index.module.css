@@ -1,7 +1,7 @@
 @import '../../../variables.css';
 
 .default {
-  width: var(--_ladoc-sidebar-width);
+  min-width: var(--_ladoc-sidebar-width);
   height: calc(100vh - var(--_ladoc-header-height));
 
   position: sticky;

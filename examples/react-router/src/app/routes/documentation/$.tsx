@@ -3,7 +3,7 @@ import pages from 'virtual:ladoc:pages';
 import type { Route } from './+types/$';
 import { get_page } from '@ladoc/server';
 import { Suspense } from 'react';
-import { PageContent } from '@ladoc/react';
+import { DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader } from '@ladoc/react';
 
 export async function loader({ params }: Route.LoaderArgs) {
   const page = await get_page('/' + params['*']);
@@ -14,10 +14,16 @@ export async function loader({ params }: Route.LoaderArgs) {
 export default function Page({ loaderData: { language, path } }: Route.ComponentProps) {
   const page = pages[language][path]();
   return (
-    <Suspense fallback={<p>Loading.</p>}>
-      <PageContent page={page} />
-    </Suspense>
-  );
+    <>
+      <DocumentationSidebarContent>
+        <Suspense fallback={<p>Loading.</p>}>
+          <PageHeader page={page} />
+          <PageContent page={page} />
+        </Suspense>
+      </DocumentationSidebarContent>
+      <DocumentationToc page={page} />
+    </>
+   );
 }
 
 export { ErrorBoundary } from '@/shared/components/error-boundary';

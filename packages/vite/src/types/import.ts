@@ -1,7 +1,8 @@
-import type { frontmatter } from '@ladoc/core/markdown';
+import type { frontmatter, toc } from '@ladoc/core/markdown';
 
 declare global {
   type Markdown = {
+    toc: toc;
     frontmatter: frontmatter;
     html: string;
   };

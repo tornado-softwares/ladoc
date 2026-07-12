@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { get_pages_map } from './utils';
 import { get_tree } from '@ladoc/core/routing';
-import { get_markdown_html, extract_frontmatter } from '@ladoc/core/markdown';
+import { get_markdown_html, extract_frontmatter, extract_toc } from '@ladoc/core/markdown';
 
 export function plugin(): Plugin {
   return {
@@ -50,10 +50,12 @@ export function plugin(): Plugin {
             CONFIGURATION.logger.debug('watching', '[', this.environment.name, ']', file_path);
           }
           const content = fs.readFileSync(file_path, 'utf-8');
-          const { frontmatter, markdown } = extract_frontmatter(content);
-          const html = await get_markdown_html(markdown);
+          const { frontmatter, markdown: markdown_1 } = extract_frontmatter(content);
+          const { toc, markdown: markdown_2 } = extract_toc(markdown_1);
+          const html = await get_markdown_html(markdown_2);
           return `export default {
             frontmatter:${JSON.stringify(frontmatter)},
+            toc:${JSON.stringify(toc)},
             html:${JSON.stringify(html)}
           };`;
         } else {

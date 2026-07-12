@@ -1,40 +1,17 @@
-import { Suspense, useEffect, useState } from 'react';
-import { Await } from 'react-router';
-import pages from 'virtual:ladoc:pages';
-const languages = Object.keys(pages);
+import { Button } from '@ladoc/react';
 import '@ladoc/styles/markdown.css';
+import { Link } from 'react-router';
 
 export default function Home() {
   return (
-    <main className="max-w-337.5 w-full mx-auto mt-20 flex flex-col items-start gap-2">
-      <p>Hello World :)</p>
-      {languages.map((language) => {
-        const language_pages = Object.keys(pages[language]);
-        return (
-          <div key={language} className="space-y-3">
-            <h1 className="text-xl">{language}</h1>
-            <div className="grid gap-2 grid-cols-4 w-full">
-              {language_pages.map((language_page) => {
-                const page = pages[language][language_page]();
-                return (
-                  <Suspense key={language_page} fallback={<p>Loading.</p>}>
-                    <Await resolve={page}>
-                      {(value) => {
-                        return (
-                          <div className="flex flex-col size-full">
-                            <p className="bg-emerald-100 rounded-t-sm p-1 text-xs">{language_page}</p>
-                            <div dangerouslySetInnerHTML={{ __html: value.default.html }} className="p-4 ladoc-markdown" />
-                          </div>
-                        );
-                      }}
-                    </Await>
-                  </Suspense>
-                );
-              })}
-            </div>
-          </div>
-        );
-      })}
+    <main className="max-w-337.5 w-full mx-auto  ladoc-markdown">
+      <h1>Welcome to my Super Documentation !</h1>
+      <p>This is a place where you can learn a lot about this framework !</p>
+      <div className="no-ladoc-markdown">
+        <Link to={'/documentation/complete'}>
+          <Button>Let's get started</Button>
+        </Link>
+      </div>
     </main>
   );
 }

@@ -9,5 +9,6 @@ export { DocumentationToc } from './components/documentation/toc';
 export { DocumentationTocContent } from './components/documentation/toc/content';
 
 export { PageContent } from './components/documentation/page/content';
+export { PageHeader } from './components/documentation/page/header';
 
 export { Button } from './components/button';

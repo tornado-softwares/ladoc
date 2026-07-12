@@ -1,5 +1,13 @@
 @import './variables.css';
 
+.ladoc-markdown + .ladoc-markdown {
+  padding-top: 0;
+}
+
+.ladoc-markdown:has(+ .ladoc-markdown) {
+  padding-bottom: 0;
+}
+
 .ladoc-markdown {
   color: var(--_ladoc-color-text);
   padding: var(--_ladoc-padding-root);
@@ -113,4 +121,37 @@
 .no-ladoc-markdown {
   all: revert;
   box-sizing: border-box;
+}
+
+.ladoc-markdown h1:not(.no-ladoc-markdown *) a,
+.ladoc-markdown h2:not(.no-ladoc-markdown *) a,
+.ladoc-markdown h3:not(.no-ladoc-markdown *) a,
+.ladoc-markdown h4:not(.no-ladoc-markdown *) a,
+.ladoc-markdown h5:not(.no-ladoc-markdown *) a,
+.ladoc-markdown h6:not(.no-ladoc-markdown *) a {
+  color: inherit;
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.ladoc-markdown h1:not(.no-ladoc-markdown *):has(> a)::after,
+.ladoc-markdown h2:not(.no-ladoc-markdown *):has(> a)::after,
+.ladoc-markdown h3:not(.no-ladoc-markdown *):has(> a)::after,
+.ladoc-markdown h4:not(.no-ladoc-markdown *):has(> a)::after,
+.ladoc-markdown h5:not(.no-ladoc-markdown *):has(> a)::after,
+.ladoc-markdown h6:not(.no-ladoc-markdown *):has(> a)::after {
+  content: '#';
+  margin-left: 0.5em;
+  color: var(--_ladoc-color-muted-foreground);
+  opacity: 0;
+  transition: opacity var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+}
+
+.ladoc-markdown h1:not(.no-ladoc-markdown *):has(> a):hover::after,
+.ladoc-markdown h2:not(.no-ladoc-markdown *):has(> a):hover::after,
+.ladoc-markdown h3:not(.no-ladoc-markdown *):has(> a):hover::after,
+.ladoc-markdown h4:not(.no-ladoc-markdown *):has(> a):hover::after,
+.ladoc-markdown h5:not(.no-ladoc-markdown *):has(> a):hover::after,
+.ladoc-markdown h6:not(.no-ladoc-markdown *):has(> a):hover::after {
+  opacity: 1;
 }

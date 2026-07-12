@@ -21,8 +21,8 @@
   --_ladoc-line-height-heading: var(--ladoc-line-height-heading, 1.25);
 
   --_ladoc-header-height: var(--ladoc-header-height, 3.5em);
-  --_ladoc-sidebar-width: var(--ladoc-sidebar-width, clamp(300px, 25vw, 450px));
-  --_ladoc-toc-width: var(--ladoc-toc-width, 350px);
+  --_ladoc-sidebar-width: var(--ladoc-sidebar-width, clamp(300px, 25vw, 350px)); /*To check*/
+  --_ladoc-toc-width: var(--ladoc-toc-width, 280px);
 
   --_ladoc-margin-heading: var(--ladoc-margin-heading, 1.2em 0 0.6em);
   --_ladoc-margin-paragraph: var(--ladoc-margin-paragraph, 0 0 1em);

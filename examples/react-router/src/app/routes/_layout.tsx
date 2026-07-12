@@ -1,3 +1,4 @@
+import { DocumentationHeader, DocumentationLayout } from '@ladoc/react';
 import type { Route } from './+types/_index';
 import { Outlet } from 'react-router';
 
@@ -7,8 +8,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Layout() {
   return (
-    <main className="min-h-screen relative">
+    <DocumentationLayout>
+      <DocumentationHeader />
       <Outlet />
-    </main>
+    </DocumentationLayout>
   );
 }
