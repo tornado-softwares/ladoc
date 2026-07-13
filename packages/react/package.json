@@ -27,6 +27,7 @@
     "@cxing/vitejs-plugin-inject-css": "^0.0.2",
     "@ladoc/styles": "workspace:*",
     "@ladoc/vite": "workspace:*",
+    "@ladoc/core": "workspace:*",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.3",

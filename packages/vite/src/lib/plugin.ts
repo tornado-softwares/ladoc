@@ -1,34 +1,65 @@
-import type { Plugin } from 'vite';
-import { PLUGIN_NAME, MARKDOWN_VIRTUAL_MODULE, PAGES_VIRTUAL_MODULE, CONFIGURATION, ROOT } from './constants';
+import type { Plugin, ViteDevServer } from 'vite';
+import {
+  PLUGIN_NAME,
+  MARKDOWN_VIRTUAL_MODULE,
+  PAGES_VIRTUAL_MODULE,
+  CONFIGURATION,
+  ROOT,
+} from './constants';
 import fs from 'fs';
 import path from 'path';
 import { get_pages_map } from './utils';
-import { get_tree } from '@ladoc/core/routing';
-import { get_markdown_html, extract_frontmatter, extract_toc } from '@ladoc/core/markdown';
+import {
+  get_markdown_html,
+  extract_frontmatter,
+  extract_toc,
+  page_frontmatter_schema,
+} from '@ladoc/core/markdown';
 
 export function plugin(): Plugin {
+  let server: ViteDevServer | undefined;
+
   return {
     name: PLUGIN_NAME,
     enforce: 'pre',
 
-    async configureServer(server) {
-      if (server.config.mode === 'development') {
-        for (const directory of Object.keys(CONFIGURATION.directories)) {
-          const directory_path = path.join(ROOT, CONFIGURATION.directories[directory]);
-          CONFIGURATION.logger.debug(`Watching ${directory_path} .`);
-          const tree = get_tree(directory_path);
-          console.log(tree);
-          server.watcher.on('add', (file) => {
-            if (file.startsWith(directory_path + path.sep)) {
-              console.log('File added:', file);
-            }
-          });
-          server.watcher.on('unlink', (file) => {
-            if (file.startsWith(directory_path + path.sep)) {
-              console.log('File deleted:', file);
-            }
-          });
+    configureServer(_server) {
+      server = _server;
+
+      if (server.config.mode !== 'development') {
+        return;
+      }
+
+      const invalidatePagesModule = () => {
+        const mod = server!.moduleGraph.getModuleById(PAGES_VIRTUAL_MODULE);
+
+        if (mod) {
+          server!.moduleGraph.invalidateModule(mod);
         }
+
+        server!.ws.send({
+          type: 'full-reload',
+        });
+      };
+
+      for (const directory of Object.values(CONFIGURATION.directories)) {
+        const directoryPath = path.join(ROOT, directory);
+
+        server.watcher.add(directoryPath);
+
+        server.watcher.on('add', (file) => {
+          if (file.startsWith(directoryPath + path.sep)) {
+            CONFIGURATION.logger.debug(`File added: ${file}`);
+            invalidatePagesModule();
+          }
+        });
+
+        server.watcher.on('unlink', (file) => {
+          if (file.startsWith(directoryPath + path.sep)) {
+            CONFIGURATION.logger.debug(`File removed: ${file}`);
+            invalidatePagesModule();
+          }
+        });
       }
     },
 
@@ -36,33 +67,50 @@ export function plugin(): Plugin {
       if (id.startsWith(MARKDOWN_VIRTUAL_MODULE)) {
         return id;
       }
-      if (id == PAGES_VIRTUAL_MODULE) {
+
+      if (id === PAGES_VIRTUAL_MODULE) {
         return id;
       }
     },
 
     async load(id) {
       if (id.startsWith(MARKDOWN_VIRTUAL_MODULE)) {
-        const file_path = id.slice(MARKDOWN_VIRTUAL_MODULE.length);
-        if (fs.existsSync(file_path)) {
-          if (this.environment.mode == 'dev') {
-            this.addWatchFile(file_path);
-            CONFIGURATION.logger.debug('watching', '[', this.environment.name, ']', file_path);
-          }
-          const content = fs.readFileSync(file_path, 'utf-8');
-          const { frontmatter, markdown: markdown_1 } = extract_frontmatter(content);
-          const { toc, markdown: markdown_2 } = extract_toc(markdown_1);
-          const html = await get_markdown_html(markdown_2);
-          return `export default {
-            frontmatter:${JSON.stringify(frontmatter)},
-            toc:${JSON.stringify(toc)},
-            html:${JSON.stringify(html)}
-          };`;
-        } else {
-          return `export default \`This page doesnt exist.\``;
+        const filePath = id.slice(MARKDOWN_VIRTUAL_MODULE.length);
+
+        if (!fs.existsSync(filePath)) {
+          return `export default \`This page doesn't exist.\`;`;
         }
+
+        if (this.environment.mode === 'dev') {
+          this.addWatchFile(filePath);
+          CONFIGURATION.logger.debug(
+            'watching',
+            `[${this.environment.name}]`,
+            filePath,
+          );
+        }
+
+        const content = fs.readFileSync(filePath, 'utf8');
+
+        const { frontmatter, markdown: markdown1 } = extract_frontmatter(
+          content,
+          page_frontmatter_schema,
+        );
+
+        const { toc, markdown: markdown2 } = extract_toc(markdown1);
+
+        const html = await get_markdown_html(markdown2);
+
+        return `
+          export default {
+            frontmatter: ${JSON.stringify(frontmatter)},
+            toc: ${JSON.stringify(toc)},
+            html: ${JSON.stringify(html)}
+          };
+        `;
       }
-      if (id == PAGES_VIRTUAL_MODULE) {
+
+      if (id === PAGES_VIRTUAL_MODULE) {
         return await get_pages_map();
       }
     },

@@ -6,7 +6,6 @@ export default {
   },
   directories: {
     default: './src/assets/content/default',
-    fr: './src/assets/content/fr',
   },
   markdown: {
     engine: 'markdown-it',

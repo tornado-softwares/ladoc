@@ -1,9 +1,10 @@
-import type { frontmatter, toc } from '@ladoc/core/markdown';
+import type { page_frontmatter, toc } from '@ladoc/core/markdown';
+import type { TreeObject} from '@ladoc/core/routing';
 
 declare global {
   type Markdown = {
     toc: toc;
-    frontmatter: frontmatter;
+    frontmatter: page_frontmatter;
     html: string;
   };
   type MarkdownModule = { default: Markdown };
@@ -19,6 +20,12 @@ declare global {
   // @ts-expect-error
   module 'virtual:ladoc:pages' {
     const content: Pages;
+    export default content;
+  }
+
+  // @ts-expect-error
+  module 'virtual:ladoc:tree' {
+    const content: TreeObject[];
     export default content;
   }
 }

@@ -19,12 +19,6 @@ type Pages = {
       "*": string;
     };
   };
-  "/:lang/documentation/*": {
-    params: {
-      "lang": string;
-      "*": string;
-    };
-  };
   "/documentation": {
     params: {};
   };
@@ -44,19 +38,15 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/*" | "/:lang/documentation/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/trombinoscope";
+    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/trombinoscope";
   };
   "routes/_layout.tsx": {
     id: "routes/_layout";
-    page: "/" | "/*" | "/:lang/documentation/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/trombinoscope";
+    page: "/" | "/*" | "/documentation" | "/documentation/*" | "/llms.txt" | "/trombinoscope";
   };
   "routes/$.tsx": {
     id: "routes/$";
     page: "/*";
-  };
-  "routes/$lang/documentation/$.tsx": {
-    id: "routes/$lang/documentation/$";
-    page: "/:lang/documentation/*";
   };
   "routes/_index.tsx": {
     id: "routes/_index";
@@ -84,7 +74,6 @@ type RouteModules = {
   "root": typeof import("./src/app/root.tsx");
   "routes/_layout": typeof import("./src/app/routes/_layout.tsx");
   "routes/$": typeof import("./src/app/routes/$.tsx");
-  "routes/$lang/documentation/$": typeof import("./src/app/routes/$lang/documentation/$.tsx");
   "routes/_index": typeof import("./src/app/routes/_index.tsx");
   "routes/documentation/_layout": typeof import("./src/app/routes/documentation/_layout.tsx");
   "routes/documentation/$": typeof import("./src/app/routes/documentation/$.tsx");

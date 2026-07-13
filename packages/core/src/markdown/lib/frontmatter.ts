@@ -1,9 +1,7 @@
 import { parse as parse_yaml } from 'yaml';
-import { frontmatter_schema } from './schemas/frontmatter';
 import z from 'zod';
-import type { frontmatter } from '../types/frontmatter';
 
-export const extract_frontmatter = (input: string): { frontmatter: frontmatter; markdown: string } => {
+export const extract_frontmatter = <FrontmatterSchema extends z.ZodTypeAny>(input: string, schema:FrontmatterSchema): { frontmatter: z.infer<FrontmatterSchema>; markdown: string } => {
   const lines = input.split('\n');
   let start_index: number | undefined = undefined;
   let end_index: number | undefined = undefined;
@@ -22,7 +20,7 @@ export const extract_frontmatter = (input: string): { frontmatter: frontmatter; 
     const raw_frontmatter = lines.slice(start_index, end_index).join('\n');
     const markdown = lines.slice(end_index + 1).join('\n');
     const parsed_frontmatter = parse_yaml(raw_frontmatter);
-    const { data: frontmatter, error } = frontmatter_schema.safeParse(parsed_frontmatter);
+    const { data: frontmatter, error } = schema.safeParse(parsed_frontmatter);
     if (error) {
       throw new Error(z.prettifyError(error));
     }
@@ -31,5 +29,9 @@ export const extract_frontmatter = (input: string): { frontmatter: frontmatter; 
       markdown,
     };
   }
-  return { frontmatter: { title: 'No title.', description: 'No description' }, markdown: input };
+  const { data: frontmatter, error } = schema.safeParse({});
+  if (error) {
+    throw new Error(z.prettifyError(error));
+  }
+  return { frontmatter, markdown: input };
 };

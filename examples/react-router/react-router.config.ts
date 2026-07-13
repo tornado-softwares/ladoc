@@ -8,11 +8,8 @@ export default {
     paths: async (args) => {
       console.log(args.getStaticPaths());
       const ladoc_paths = await get_static_paths();
-      const documentation_i18n = ladoc_paths.map((page) => '/' + page.language + '/' + 'documentation' + page.path);
-      const documentation_no_i18n = ladoc_paths.map((page) => '/' + 'documentation' + page.path);
-      console.log(documentation_i18n);
-      console.log(documentation_no_i18n);
-      return [...documentation_i18n, ...documentation_no_i18n];
+      const documentation = ladoc_paths.map((page) => '/' + 'documentation' + page.path);
+      return [...documentation];
     },
     concurrency: 10,
   },

@@ -1,5 +1,6 @@
 export const naming = {
   index: '_index',
+  data: '_data',
   param: {
     prefix: '$',
   },

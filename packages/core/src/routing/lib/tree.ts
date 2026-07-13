@@ -1,24 +1,42 @@
-import type { Category, Content, Page } from '../types/routing';
+import type { Category, TreeObject, Page, Data } from '../types/routing';
 import type { File, Object } from '../types/structure';
 import { parse_segments } from './utils/segments';
 import { explore } from './utils/explore';
 import { naming } from './utils/constants';
-import { get_configuration } from '@/configuration';
+import  fs  from 'fs';
+import { data_frontmatter_schema, extract_frontmatter, page_frontmatter_schema } from '@/markdown';
 
-const object_to_page = (object: Object, level: number = 0, parent_layout: boolean = false, base_level = true): Page[] => {
+const object_to_page = (object: Object, level: number = 0, parent_is_category: boolean = false, base_level = true): TreeObject[] => {
   if (object.type == 'file') {
-    const is_index = object.name == naming.index;
-    const route: Content = {
-      id: object.name,
-      file: object.path,
-      path: parse_segments(object.id, 1),
-    };
-    if (is_index && parent_layout) {
-      route.index = true;
+    const is_data = object.name == naming.data;
+    if (is_data) {
+      const content = fs.readFileSync(object.path, 'utf-8');
+      const { frontmatter } = extract_frontmatter(content, data_frontmatter_schema);
+      const route: Data = {
+        id: object.name,
+        type:"data",
+        frontmatter,
+      };
+      return [route];
+    } else {
+      const is_index = object.name == naming.index;
+      const content = fs.readFileSync(object.path, 'utf-8');
+      const { frontmatter } = extract_frontmatter(content, page_frontmatter_schema);
+      const route: Page = {
+        id: object.name,
+        type: "page",
+        file:object.path,
+        frontmatter,
+        path: parse_segments(object.id, 1),
+      };
+      if (is_index && parent_is_category) {
+        route.index = true;
+      }
+      return [route];
     }
-    return [route];
+
   } else {
-    let children: Page[] = [];
+    let children: TreeObject[] = [];
     for (const child of object.children) {
       if (base_level) {
         children = [...children, ...object_to_page(child, level, true, false)];
@@ -28,13 +46,14 @@ const object_to_page = (object: Object, level: number = 0, parent_layout: boolea
     }
     const route: Category = {
       id: object.name,
+      type: "category",
       children,
     };
     return [route];
   }
 };
 
-export const get_tree = (path: string) => {
+export const get_tree = (path: string): TreeObject[] => {
   const tree = explore({
     path: path,
     extensions: ['.mdx'],
@@ -45,5 +64,5 @@ export const get_tree = (path: string) => {
   return object_to_page(tree);
 };
 
-export const get_tree_pages = (tree: Page[]): Content[] =>
-  tree.flatMap((page) => ('file' in page ? [page] : page.children ? get_tree_pages(page.children) : []));
+export const get_tree_pages = (tree: TreeObject[]): Page[] =>
+  tree.flatMap((page) => (page.type == "page" ? [page] : page.type == "category" ? get_tree_pages(page.children) : []));

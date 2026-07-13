@@ -1,4 +1,5 @@
 import type z from 'zod';
-import type { frontmatter_schema } from '../lib/schemas/frontmatter';
+import type { data_frontmatter_schema, page_frontmatter_schema  } from '../lib/schemas/frontmatter';
 
-export type frontmatter = z.infer<typeof frontmatter_schema>;
+export type page_frontmatter = z.infer<typeof page_frontmatter_schema>;
+export type data_frontmatter = z.infer<typeof data_frontmatter_schema>;
