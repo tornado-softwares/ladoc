@@ -1,11 +1,11 @@
-import type { page_frontmatter, toc } from '@ladoc/core/markdown';
+import type { page_frontmatter, parser_output, toc } from '@ladoc/core/markdown';
 import type { TreeObject} from '@ladoc/core/routing';
 
 declare global {
   type Markdown = {
     toc: toc;
     frontmatter: page_frontmatter;
-    html: string;
+    engine_output: parser_output;
   };
   type MarkdownModule = { default: Markdown };
   type LazyMarkdown = () => Promise<MarkdownModule>;

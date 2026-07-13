@@ -3,8 +3,9 @@ import pages from 'virtual:ladoc:pages';
 import type { Route } from './+types/$';
 import { get_page, get_tree } from '@ladoc/server';
 import { Suspense } from 'react';
-import { DocumentationSidebar, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader } from '@ladoc/react';
+import { Button, DocumentationSidebar, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader } from '@ladoc/react';
 import * as LucideIcons from 'lucide-react';
+
 export async function loader({ params }: Route.LoaderArgs) {
   const page = await get_page('/' + params['*']);
   if (!page) throw data(null, { status: 404 });
@@ -25,7 +26,9 @@ export default function Page({ loaderData: { language, path, tree } }: Route.Com
       <DocumentationSidebarContent>
         <Suspense fallback={<p>Loading.</p>}>
           <PageHeader page={page} />
-          <PageContent page={page} />
+          <PageContent page={page} components={{
+            "Button": Button
+          }} />
         </Suspense>
       </DocumentationSidebarContent>
       <Suspense fallback={<p>Loading.</p>}>

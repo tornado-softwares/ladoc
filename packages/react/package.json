@@ -25,9 +25,10 @@
   },
   "devDependencies": {
     "@cxing/vitejs-plugin-inject-css": "^0.0.2",
+    "@ladoc/core": "workspace:*",
     "@ladoc/styles": "workspace:*",
     "@ladoc/vite": "workspace:*",
-    "@ladoc/core": "workspace:*",
+    "@types/mdx": "^2.0.14",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.3",
@@ -39,6 +40,7 @@
     "vite-plugin-lib-inject-styles": "^1.0.1"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^3.1.1",
     "vite-plugin-css-injected-by-js": "^5.0.1",
     "vite-plugin-dts": "^5.0.3"
   }

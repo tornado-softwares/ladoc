@@ -4,13 +4,14 @@ import { dummy } from './engines/dummy';
 import { markdown_it } from './engines/markdown_it';
 import { marked } from './engines/marked';
 import { bun } from './engines/bun';
+import { mdx_js } from './engines/mdx-js';
 
 export const markdown_engines: engines = {
   bun: bun,
   ladoc: dummy,
   'markdown-it': markdown_it,
   marked: marked,
-  'mdx-bundler': dummy,
+  'mdx-js': mdx_js,
 };
 
 export const get_markdown_html: parser = async (content: string) => {

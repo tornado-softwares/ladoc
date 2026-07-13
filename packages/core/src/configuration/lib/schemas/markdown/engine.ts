@@ -2,7 +2,7 @@ import z from 'zod';
 import { is_bun } from '../../constants';
 
 export const engine_schema = z
-  .enum(['ladoc', 'bun', 'marked', 'markdown-it', 'mdx-bundler'])
+  .enum(['ladoc', 'bun', 'marked', 'markdown-it', 'mdx-js'])
   .default('ladoc')
   .refine((value) => {
     if (value == 'bun' && !is_bun) throw new Error('You are not currently using Bun as your runtime. Therefore, you cannot use its Markdown engine.');

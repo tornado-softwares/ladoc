@@ -5,5 +5,5 @@ import { markdown_it_anchors_plugin } from '../plugins/markdown-it-anchors-plugi
 export const markdown_it: parser = async (content: string) => {
   const md = MarkdownIt();
   md.use(markdown_it_anchors_plugin)
-  return md.render(content);
+  return {type:"html", html: md.render(content)}
 };

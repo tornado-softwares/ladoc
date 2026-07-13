@@ -1,20 +1,9 @@
 import type { Plugin, ViteDevServer } from 'vite';
-import {
-  PLUGIN_NAME,
-  MARKDOWN_VIRTUAL_MODULE,
-  PAGES_VIRTUAL_MODULE,
-  CONFIGURATION,
-  ROOT,
-} from './constants';
+import { PLUGIN_NAME, MARKDOWN_VIRTUAL_MODULE, PAGES_VIRTUAL_MODULE, CONFIGURATION, ROOT } from './constants';
 import fs from 'fs';
 import path from 'path';
 import { get_pages_map } from './utils';
-import {
-  get_markdown_html,
-  extract_frontmatter,
-  extract_toc,
-  page_frontmatter_schema,
-} from '@ladoc/core/markdown';
+import { get_markdown_html, extract_frontmatter, extract_toc, page_frontmatter_schema } from '@ladoc/core/markdown';
 
 export function plugin(): Plugin {
   let server: ViteDevServer | undefined;
@@ -83,19 +72,12 @@ export function plugin(): Plugin {
 
         if (this.environment.mode === 'dev') {
           this.addWatchFile(filePath);
-          CONFIGURATION.logger.debug(
-            'watching',
-            `[${this.environment.name}]`,
-            filePath,
-          );
+          CONFIGURATION.logger.debug('watching', `[${this.environment.name}]`, filePath);
         }
 
         const content = fs.readFileSync(filePath, 'utf8');
 
-        const { frontmatter, markdown: markdown1 } = extract_frontmatter(
-          content,
-          page_frontmatter_schema,
-        );
+        const { frontmatter, markdown: markdown1 } = extract_frontmatter(content, page_frontmatter_schema);
 
         const { toc, markdown: markdown2 } = extract_toc(markdown1);
 
@@ -105,7 +87,7 @@ export function plugin(): Plugin {
           export default {
             frontmatter: ${JSON.stringify(frontmatter)},
             toc: ${JSON.stringify(toc)},
-            html: ${JSON.stringify(html)}
+            engine_output: ${JSON.stringify(html)}
           };
         `;
       }
