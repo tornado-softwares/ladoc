@@ -155,3 +155,159 @@
 .ladoc-markdown h6:not(.no-ladoc-markdown *):has(> a):hover::after {
   opacity: 1;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Bloc <pre><code> */
+.ladoc-markdown pre:not(.no-ladoc-markdown *) {
+  background: var(--_ladoc-color-card);
+  overflow: auto;
+  border-radius: var(--_ladoc-radius);
+  border: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
+  margin: 0 0 1em;
+}
+
+
+.ladoc-markdown pre:not(.no-ladoc-markdown *) code:not(.no-ladoc-markdown *) {
+  background: transparent;
+  padding: 0;
+  padding: var(--_ladoc-padding-pre);
+  border-radius: 0;
+  font-size: var(--_ladoc-pre-font-size);
+  line-height: var(--_ladoc-pre-line-height);
+  display: block;
+  white-space: pre;
+  color: var(--_ladoc-color-text);
+  font-family: var(--_ladoc-font-mono);
+}
+
+
+
+
+
+/* --- Shiki: structure de base --- */
+.ladoc-markdown pre.shiki {
+  position: relative;
+}
+
+.ladoc-markdown pre.shiki code {
+  display: block;
+}
+
+.ladoc-markdown pre.shiki .line {
+  display: inline-block;
+  width: 100%;
+  padding: 0 var(--_ladoc-padding-pre);
+  margin-inline: calc(var(--_ladoc-padding-pre) * -1);
+  transition: opacity var(--_ladoc-transition-duration) var(--_ladoc-transition-timing),
+              filter var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+}
+
+
+.ladoc-markdown pre.shiki.has-title {
+  padding-top: 0;
+  overflow: hidden; /* pour que le radius du pre coupe proprement le title */
+}
+
+.ladoc-markdown .code-title {
+  font-family: var(--_ladoc-font-mono);
+  font-size: 0.8em;
+  color: var(--_ladoc-color-muted-foreground);
+  padding: 0.5em var(--_ladoc-padding-pre);
+  border-bottom: var(--_ladoc-hr-height) solid var(--_ladoc-color-muted);
+  border-radius: var(--_ladoc-radius) var(--_ladoc-radius) 0 0;
+  letter-spacing: 0.02em;
+}
+
+.ladoc-markdown pre.shiki.has-title code {
+  padding-top: 0.8em;
+  display: block;
+}
+
+
+
+
+
+
+/* --- Highlight de ligne ({1,3} et [!code highlight]) --- */
+.ladoc-markdown pre.shiki .line.highlighted {
+  background: color-mix(in srgb, var(--_ladoc-color-text-primary) 12%, transparent);
+  border-left: 2px solid var(--_ladoc-color-text-primary);
+}
+
+/* --- Highlight de mot (word notation) --- */
+.ladoc-markdown pre.shiki .highlighted-word {
+  background: color-mix(in srgb, var(--_ladoc-color-text-primary) 20%, transparent);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+/* --- Diff (ins/del et [!code ++]/[!code --]) --- */
+.ladoc-markdown pre.shiki .line.diff {
+  position: relative;
+  padding-left: calc(var(--_ladoc-padding-pre) + 1em);
+}
+
+.ladoc-markdown pre.shiki .line.diff::before {
+  position: absolute;
+  left: var(--_ladoc-padding-pre);
+  font-family: var(--_ladoc-font-mono);
+}
+
+.ladoc-markdown pre.shiki .line.diff.add {
+  background: color-mix(in srgb, var(--_ladoc-syntax-addition) 15%, transparent);
+}
+
+.ladoc-markdown pre.shiki .line.diff.add::before {
+  content: '+';
+  color: var(--_ladoc-syntax-addition);
+}
+
+.ladoc-markdown pre.shiki .line.diff.remove {
+  background: color-mix(in srgb, var(--_ladoc-syntax-deletion) 15%, transparent);
+}
+
+.ladoc-markdown pre.shiki .line.diff.remove::before {
+  content: '-';
+  color: var(--_ladoc-syntax-deletion);
+}
+
+/* --- Focus ([!code focus]) --- */
+.ladoc-markdown pre.shiki.has-focused .line {
+  opacity: 0.4;
+  filter: blur(0.15px);
+}
+
+.ladoc-markdown pre.shiki.has-focused .line.focused {
+  opacity: 1;
+  filter: none;
+}
+
+.ladoc-markdown pre.shiki.has-focused:hover .line {
+  opacity: 1;
+  filter: none;
+}
+
+/* --- Error / Warning ([!code error]/[!code warning]) --- */
+.ladoc-markdown pre.shiki .line.highlighted.error {
+  background: color-mix(in srgb, var(--_ladoc-syntax-deletion) 18%, transparent);
+  border-left: 2px solid var(--_ladoc-syntax-deletion);
+}
+
+.ladoc-markdown pre.shiki .line.highlighted.warning {
+  background: color-mix(in srgb, #e0af68 18%, transparent);
+  border-left: 2px solid #e0af68;
+}

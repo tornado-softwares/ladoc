@@ -5,3 +5,5 @@ export const get_tree = async (_language?: string) => {
   const tree = gt(directory)
   return { language, tree}
 }
+
+export {get_tree_pages} from "@ladoc/core/routing"
