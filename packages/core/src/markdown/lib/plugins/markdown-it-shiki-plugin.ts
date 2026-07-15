@@ -1,21 +1,28 @@
-import Shiki from '@shikijs/markdown-it'
-import type MarkdownIt from "markdown-it";
 import { shiki_theme } from '../shiki/theme';
 import { shiki_transformers } from '../shiki/transformers';
+import { codeToHtml } from 'shiki';
+import type { BundledLanguage } from 'shiki/bundle/web';
+import type { MarkdownItAsync } from 'markdown-it-async';
 
-let shiki_plugin_promise: ReturnType<typeof Shiki> | null = null;
-
-const get_shiki_plugin = () => {
-  if (!shiki_plugin_promise) {
-    shiki_plugin_promise = Shiki({
+export const markdown_it_shiki_plugin = async (md: MarkdownItAsync) => {
+  md.options.highlight = async (code, lang, attrs) => {
+    if (code.endsWith('\n')) code = code.slice(0, -1);
+    const html = await codeToHtml(code, {
+      lang: (lang || 'text') as BundledLanguage,
       theme: shiki_theme,
-      transformers: shiki_transformers,
+      transformers: [
+        {
+          name: '@shikijs/markdown-it:block-class',
+          code(node) {
+            node.properties.class = `language-${lang}`;
+          },
+        },
+        ...shiki_transformers,
+      ],
+      meta: {
+        __raw: attrs,
+      },
     });
-  }
-  return shiki_plugin_promise;
-};
-
-export const markdown_it_shiki_plugin = async (md: MarkdownIt) => {
-  const shiki = await get_shiki_plugin();
-  md.use(shiki);
+    return html;
+  };
 };

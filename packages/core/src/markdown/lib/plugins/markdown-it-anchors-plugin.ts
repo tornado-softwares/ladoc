@@ -1,7 +1,7 @@
-import type MarkdownIt from 'markdown-it';
 import { parse_header_content } from '@/markdown/lib/toc';
+import type { MarkdownItAsync } from 'markdown-it-async';
 
-export function markdown_it_anchors_plugin(md: MarkdownIt) {
+export function markdown_it_anchors_plugin(md: MarkdownItAsync) {
   const defaultRender =
     md.renderer.rules.heading_open ??
     ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));

@@ -3,6 +3,43 @@ title: Code Block
 description : Learn the Markdown syntax about code blocks.
 ---
 
+````ts twoslash title="Test" lineNumbers
+type Player = {
+  /**
+   * The player name
+   * ```php
+   * $a = "60"
+   * ```
+   *
+   * @default 'user'
+   */
+  name: string;
+};
+
+// ---cut---
+// @noErrors
+console.g;
+//       ^|
+
+const player: Player = { name: 'Hello World' };
+//    ^?
+````
+
+```ts twoslash LineNumbers
+const a = '123';
+
+console.log(a);
+//      ^^^
+```
+
+```ts twoslash
+// @errors: 2588
+const a = '123';
+
+a = 132;
+```
+
+
 Code blocks are usefull to show the reader some code examples, with ladoc it's super easy !
 
 ```py
@@ -31,7 +68,7 @@ const oldValue = 1;
 const value = 2;
 console.log(value);
 ```
-
+ Heehee
 ```ts
 // [!code focus]
 const a = 1;

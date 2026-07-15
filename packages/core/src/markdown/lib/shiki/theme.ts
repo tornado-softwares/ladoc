@@ -8,6 +8,10 @@ export const shiki_theme: ThemeRegistration = {
     'editor.foreground': 'var(--_ladoc-color-text)',
   },
   settings: [
+    {
+      scope: ['support.function', 'entity.name.function', 'meta.function-call'],
+       settings: { foreground: 'var(--_ladoc-syntax-function)' },
+  },
     { settings: { foreground: 'var(--_ladoc-color-text)' } },
     {
       scope: ['keyword', 'storage.type', 'storage.modifier', 'keyword.control'],

@@ -45,45 +45,54 @@
   --_ladoc-transition-duration: var(--ladoc-transition-duration, 200ms);
   --_ladoc-transition-timing: var(--ladoc-transition-timing, ease);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   --_ladoc-syntax-keyword: var(--ladoc-syntax-keyword, #7bc193);
-    --_ladoc-syntax-string: var(--ladoc-syntax-string, #d4a76a);
-    --_ladoc-syntax-comment: var(--ladoc-syntax-comment, #6a6a6a);
-    --_ladoc-syntax-function: var(--ladoc-syntax-function, #82aaff);
-    --_ladoc-syntax-number: var(--ladoc-syntax-number, #c792ea);
-    --_ladoc-syntax-built-in: var(--ladoc-syntax-built-in, #82aaff);
-    --_ladoc-syntax-variable: var(--ladoc-syntax-variable, #eaeaea);
-    --_ladoc-syntax-operator: var(--ladoc-syntax-operator, #9a9a9a);
-    --_ladoc-syntax-punctuation: var(--ladoc-syntax-punctuation, #9a9a9a);
-    --_ladoc-syntax-class: var(--ladoc-syntax-class, #ffcb6b);
-    --_ladoc-syntax-tag: var(--ladoc-syntax-tag, #7bc193);
-    --_ladoc-syntax-attr: var(--ladoc-syntax-attr, #82aaff);
-    --_ladoc-syntax-title: var(--ladoc-syntax-title, #82aaff);
-    --_ladoc-syntax-literal: var(--ladoc-syntax-literal, #c792ea);
-    --_ladoc-syntax-meta: var(--ladoc-syntax-meta, #6a6a6a);
-    --_ladoc-syntax-deletion: var(--ladoc-syntax-deletion, #f07178);
-    --_ladoc-syntax-addition: var(--ladoc-syntax-addition, #7bc193);
-    --_ladoc-syntax-emphasis: var(--ladoc-syntax-emphasis, #eaeaea);
-    --_ladoc-syntax-strong: var(--ladoc-syntax-strong, #eaeaea);
+  --_ladoc-syntax-string: var(--ladoc-syntax-string, #d4a76a);
+  --_ladoc-syntax-comment: var(--ladoc-syntax-comment, #6a6a6a);
+  --_ladoc-syntax-function: var(--ladoc-syntax-function, #82aaff);
+  --_ladoc-syntax-number: var(--ladoc-syntax-number, #c792ea);
+  --_ladoc-syntax-built-in: var(--ladoc-syntax-built-in, #82aaff);
+  --_ladoc-syntax-variable: var(--ladoc-syntax-variable, #eaeaea);
+  --_ladoc-syntax-operator: var(--ladoc-syntax-operator, #9a9a9a);
+  --_ladoc-syntax-punctuation: var(--ladoc-syntax-punctuation, #9a9a9a);
+  --_ladoc-syntax-class: var(--ladoc-syntax-class, #ffcb6b);
+  --_ladoc-syntax-tag: var(--ladoc-syntax-tag, #7bc193);
+  --_ladoc-syntax-attr: var(--ladoc-syntax-attr, #82aaff);
+  --_ladoc-syntax-title: var(--ladoc-syntax-title, #82aaff);
+  --_ladoc-syntax-literal: var(--ladoc-syntax-literal, #c792ea);
+  --_ladoc-syntax-meta: var(--ladoc-syntax-meta, #6a6a6a);
+  --_ladoc-syntax-deletion: var(--ladoc-syntax-deletion, #f07178);
+  --_ladoc-syntax-addition: var(--ladoc-syntax-addition, #7bc193);
+  --_ladoc-syntax-emphasis: var(--ladoc-syntax-emphasis, #eaeaea);
+  --_ladoc-syntax-strong: var(--ladoc-syntax-strong, #eaeaea);
 
-    --_ladoc-pre-font-size: var(--ladoc-pre-font-size, 0.9em);
-    --_ladoc-pre-line-height: var(--ladoc-pre-line-height, 1.5);
+  --_ladoc-pre-font-size: var(--ladoc-pre-font-size, 0.9em);
+  --_ladoc-pre-line-height: var(--ladoc-pre-line-height, 1.5);
 
-
-
-
-
+  --_ladoc-twoslash-border-color: var(--ladoc-twoslash-border-color, var(--_ladoc-color-muted));
+  --_ladoc-twoslash-underline-color: var(--ladoc-twoslash-underline-color, currentColor);
+  --_ladoc-twoslash-highlighted-border: var(
+    --ladoc-twoslash-highlighted-border,
+    color-mix(in srgb, var(--_ladoc-color-text-primary) 30%, transparent)
+  );
+  --_ladoc-twoslash-highlighted-bg: var(--ladoc-twoslash-highlighted-bg, color-mix(in srgb, var(--_ladoc-color-text-primary) 15%, transparent));
+  --_ladoc-twoslash-popup-bg: var(--ladoc-twoslash-popup-bg, var(--_ladoc-color-card));
+  --_ladoc-twoslash-popup-color: var(--ladoc-twoslash-popup-color, var(--_ladoc-color-text));
+  --_ladoc-twoslash-popup-shadow: var(--ladoc-twoslash-popup-shadow, rgba(0, 0, 0, 0.35) 0px 2px 8px);
+  --_ladoc-twoslash-docs-color: var(--ladoc-twoslash-docs-color, var(--_ladoc-color-muted-foreground));
+  --_ladoc-twoslash-docs-font: var(--ladoc-twoslash-docs-font, var(--_ladoc-font-base));
+  --_ladoc-twoslash-code-font: var(--ladoc-twoslash-code-font, var(--_ladoc-font-mono));
+  --_ladoc-twoslash-code-font-size: var(--ladoc-twoslash-code-font-size, var(--_ladoc-pre-font-size));
+  --_ladoc-twoslash-matched-color: var(--ladoc-twoslash-matched-color, var(--_ladoc-color-text));
+  --_ladoc-twoslash-unmatched-color: var(--ladoc-twoslash-unmatched-color, var(--_ladoc-color-muted-foreground));
+  --_ladoc-twoslash-cursor-color: var(--ladoc-twoslash-cursor-color, var(--_ladoc-color-muted-foreground));
+  --_ladoc-twoslash-error-color: var(--ladoc-twoslash-error-color, var(--_ladoc-syntax-deletion));
+  --_ladoc-twoslash-error-bg: var(--ladoc-twoslash-error-bg, color-mix(in srgb, var(--_ladoc-syntax-deletion) 15%, transparent));
+  --_ladoc-twoslash-warn-color: var(--ladoc-twoslash-warn-color, #e0af68);
+  --_ladoc-twoslash-warn-bg: var(--ladoc-twoslash-warn-bg, color-mix(in srgb, #e0af68 15%, transparent));
+  --_ladoc-twoslash-tag-color: var(--ladoc-twoslash-tag-color, var(--_ladoc-syntax-built-in));
+  --_ladoc-twoslash-tag-bg: var(--ladoc-twoslash-tag-bg, color-mix(in srgb, var(--_ladoc-syntax-built-in) 15%, transparent));
+  --_ladoc-twoslash-tag-warn-color: var(--ladoc-twoslash-tag-warn-color, var(--_ladoc-twoslash-warn-color));
+  --_ladoc-twoslash-tag-warn-bg: var(--ladoc-twoslash-tag-warn-bg, var(--_ladoc-twoslash-warn-bg));
+  --_ladoc-twoslash-tag-annotate-color: var(--ladoc-twoslash-tag-annotate-color, var(--_ladoc-color-text-primary));
+  --_ladoc-twoslash-tag-annotate-bg: var(--ladoc-twoslash-tag-annotate-bg, color-mix(in srgb, var(--_ladoc-color-text-primary) 15%, transparent));
 }
