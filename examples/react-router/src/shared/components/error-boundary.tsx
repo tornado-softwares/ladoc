@@ -1,5 +1,6 @@
 import { isRouteErrorResponse } from 'react-router';
 import { useRouteError } from 'react-router';
+import "@ladoc/styles/markdown.css"
 
 export function ErrorBoundary() {
   const error = useRouteError();
@@ -15,9 +16,9 @@ export function ErrorBoundary() {
   }
 
   return (
-    <main className="max-w-337.5 w-full mx-auto p-8 space-y-2">
-      <h1 className="text-2xl">{message}</h1>
-      <p className="text-lg">{details}</p>
+    <main className="ladoc-markdown">
+      <h1 >{message}</h1>
+      <p >{details}</p>
       {stack && (
         <pre className="w-full p-4 overflow-x-auto">
           <code>{stack}</code>

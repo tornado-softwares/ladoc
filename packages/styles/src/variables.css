@@ -7,6 +7,25 @@
   --_ladoc-color-muted-foreground: var(--ladoc-color-muted-foreground, #9a9a9a);
   --_ladoc-color-muted: var(--ladoc-color-muted, #2c2c2c);
   --_ladoc-color-blockquote-border: var(--ladoc-color-blockquote-border, #4fae7b);
+  --_ladoc-syntax-keyword: var(--ladoc-syntax-keyword, #7bc193);
+  --_ladoc-syntax-string: var(--ladoc-syntax-string, #d4a76a);
+  --_ladoc-syntax-comment: var(--ladoc-syntax-comment, #6a6a6a);
+  --_ladoc-syntax-function: var(--ladoc-syntax-function, #82aaff);
+  --_ladoc-syntax-number: var(--ladoc-syntax-number, #c792ea);
+  --_ladoc-syntax-built-in: var(--ladoc-syntax-built-in, #82aaff);
+  --_ladoc-syntax-variable: var(--ladoc-syntax-variable, #eaeaea);
+  --_ladoc-syntax-operator: var(--ladoc-syntax-operator, #9a9a9a);
+  --_ladoc-syntax-punctuation: var(--ladoc-syntax-punctuation, #9a9a9a);
+  --_ladoc-syntax-class: var(--ladoc-syntax-class, #ffcb6b);
+  --_ladoc-syntax-tag: var(--ladoc-syntax-tag, #7bc193);
+  --_ladoc-syntax-attr: var(--ladoc-syntax-attr, #82aaff);
+  --_ladoc-syntax-title: var(--ladoc-syntax-title, #82aaff);
+  --_ladoc-syntax-literal: var(--ladoc-syntax-literal, #c792ea);
+  --_ladoc-syntax-meta: var(--ladoc-syntax-meta, #6a6a6a);
+  --_ladoc-syntax-deletion: var(--ladoc-syntax-deletion, #f07178);
+  --_ladoc-syntax-addition: var(--ladoc-syntax-addition, #7bc193);
+  --_ladoc-syntax-emphasis: var(--ladoc-syntax-emphasis, #eaeaea);
+  --_ladoc-syntax-strong: var(--ladoc-syntax-strong, #eaeaea);
 
   --_ladoc-font-base: var(--ladoc-font-base, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
   --_ladoc-font-mono: var(--ladoc-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
@@ -45,25 +64,7 @@
   --_ladoc-transition-duration: var(--ladoc-transition-duration, 200ms);
   --_ladoc-transition-timing: var(--ladoc-transition-timing, ease);
 
-  --_ladoc-syntax-keyword: var(--ladoc-syntax-keyword, #7bc193);
-  --_ladoc-syntax-string: var(--ladoc-syntax-string, #d4a76a);
-  --_ladoc-syntax-comment: var(--ladoc-syntax-comment, #6a6a6a);
-  --_ladoc-syntax-function: var(--ladoc-syntax-function, #82aaff);
-  --_ladoc-syntax-number: var(--ladoc-syntax-number, #c792ea);
-  --_ladoc-syntax-built-in: var(--ladoc-syntax-built-in, #82aaff);
-  --_ladoc-syntax-variable: var(--ladoc-syntax-variable, #eaeaea);
-  --_ladoc-syntax-operator: var(--ladoc-syntax-operator, #9a9a9a);
-  --_ladoc-syntax-punctuation: var(--ladoc-syntax-punctuation, #9a9a9a);
-  --_ladoc-syntax-class: var(--ladoc-syntax-class, #ffcb6b);
-  --_ladoc-syntax-tag: var(--ladoc-syntax-tag, #7bc193);
-  --_ladoc-syntax-attr: var(--ladoc-syntax-attr, #82aaff);
-  --_ladoc-syntax-title: var(--ladoc-syntax-title, #82aaff);
-  --_ladoc-syntax-literal: var(--ladoc-syntax-literal, #c792ea);
-  --_ladoc-syntax-meta: var(--ladoc-syntax-meta, #6a6a6a);
-  --_ladoc-syntax-deletion: var(--ladoc-syntax-deletion, #f07178);
-  --_ladoc-syntax-addition: var(--ladoc-syntax-addition, #7bc193);
-  --_ladoc-syntax-emphasis: var(--ladoc-syntax-emphasis, #eaeaea);
-  --_ladoc-syntax-strong: var(--ladoc-syntax-strong, #eaeaea);
+
 
   --_ladoc-pre-font-size: var(--ladoc-pre-font-size, 0.9em);
   --_ladoc-pre-line-height: var(--ladoc-pre-line-height, 1.5);

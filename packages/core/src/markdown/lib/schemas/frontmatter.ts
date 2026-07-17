@@ -1,8 +1,10 @@
+import { available_engines, engine_schema } from '@/configuration/lib/schemas/markdown/engine';
 import z from 'zod';
 
 export const page_frontmatter_schema = z.object({
   title: z.string().default('No title.'),
   description: z.string().default('No description.'),
+  engine: z.enum(available_engines).optional(),
   order: z.number().optional(),
   icon: z.string().optional(),
 });

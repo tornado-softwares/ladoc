@@ -1,4 +1,4 @@
-import { get_configuration } from '@/configuration';
+import { get_configuration, type parsed_ladoc_configuration } from '@/configuration';
 import type { engines, parser } from '../types/engine';
 import { dummy } from './engines/dummy';
 import { markdown_it } from './engines/markdown-it';
@@ -14,11 +14,12 @@ export const markdown_engines: engines = {
   'mdx-js': mdx_js,
 };
 
-export const get_markdown_html: parser = async (content: string) => {
+export const get_markdown_html = async (content: string, _engine?:parsed_ladoc_configuration["markdown"]["engine"]) => {
   const configuration = await get_configuration();
+  const engine = _engine ? _engine : configuration.markdown.engine
   const start = Date.now();
-  const html = markdown_engines[configuration.markdown.engine](content);
+  const html = markdown_engines[engine](content);
   const end = Date.now();
-  configuration.logger.debug('parsed with', configuration.markdown.engine, 'in', end - start, 'ms');
+  configuration.logger.debug('parsed with', engine, 'in', end - start, 'ms');
   return html;
 };

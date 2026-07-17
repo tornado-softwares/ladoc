@@ -11,16 +11,10 @@ function compileMDX(code: string) {
   });
 }
 
-export function PageContent({
-  page,
-  components,
-}: {
-  page: Promise<MarkdownModule>;
-  components?: MDXComponents;
-}) {
+export function PageContent({ page, components }: { page: Promise<MarkdownModule>; components?: MDXComponents }) {
   const value = use(page);
 
-  if (value.default.engine_output.type == "html") {
+  if (value.default.engine_output.type == 'html') {
     return (
       <div className="ladoc-markdown">
         <div dangerouslySetInnerHTML={{ __html: value.default.engine_output.html }} />

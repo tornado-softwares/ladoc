@@ -4,8 +4,8 @@ import type { Plugin } from 'unified';
 import type { Root, Element } from 'hast';
 import { codeToHast } from 'shiki';
 import type { BundledLanguage } from 'shiki/bundle/web';
-import { shiki_theme } from '../shiki/theme';
-import { shiki_transformers } from '../shiki/transformers';
+import { shiki_theme } from '../../shiki/theme';
+import { shiki_transformers } from '../../shiki/transformers';
 
 export const rehype_shiki_plugin: Plugin<[], Root> = () => {
   return async (tree) => {
@@ -13,9 +13,7 @@ export const rehype_shiki_plugin: Plugin<[], Root> = () => {
 
     visit(tree, 'element', (node: Element) => {
       if (node.tagName !== 'pre') return;
-      const code = node.children.find(
-        (c): c is Element => c.type === 'element' && c.tagName === 'code',
-      );
+      const code = node.children.find((c): c is Element => c.type === 'element' && c.tagName === 'code');
       if (code) targets.push({ pre: node, code });
     });
 
@@ -35,7 +33,7 @@ export const rehype_shiki_plugin: Plugin<[], Root> = () => {
 
         const shiki_pre = hast_root.children[0] as Element;
         Object.assign(pre, shiki_pre);
-      }),
+      })
     );
   };
 };

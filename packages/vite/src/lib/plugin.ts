@@ -80,8 +80,7 @@ export function plugin(): Plugin {
         const { frontmatter, markdown: markdown1 } = extract_frontmatter(content, page_frontmatter_schema);
 
         const { toc, markdown: markdown2 } = extract_toc(markdown1);
-
-        const html = await get_markdown_html(markdown2);
+        const html = await get_markdown_html(markdown2, frontmatter.engine);
 
         return `
           export default {
