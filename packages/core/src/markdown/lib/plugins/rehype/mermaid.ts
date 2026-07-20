@@ -3,7 +3,7 @@ import type { Root, Element } from 'hast';
 import { visit } from 'unist-util-visit';
 import { toString } from 'hast-util-to-string';
 import { fromHtml } from 'hast-util-from-html';
-import { renderMermaidSVG } from 'beautiful-mermaid';
+import { get_mermaid_svg } from '@/markdown/utils/mermaid';
 
 export const rehype_mermaid_plugin: Plugin<[], Root> = () => {
   return async (tree) => {
@@ -21,12 +21,7 @@ export const rehype_mermaid_plugin: Plugin<[], Root> = () => {
 
     await Promise.all(
       targets.map(async ({ pre, code }) => {
-        const svg = renderMermaidSVG(toString(code), {
-          transparent: true,
-          accent: 'var(--_ladoc-color-text-primary)',
-          bg: 'var(--_ladoc-color-background)',
-          fg: 'var(--_ladoc-color-text)',
-        });
+        const svg = get_mermaid_svg(toString(code));
         const hast = fromHtml(svg, { fragment: true });
         if (hast.children.length === 1 && hast.children[0].type === 'element') {
           Object.assign(pre, hast.children[0]);

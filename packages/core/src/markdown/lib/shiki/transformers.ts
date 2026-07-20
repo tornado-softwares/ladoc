@@ -28,6 +28,19 @@ export function transformerTitle(): ShikiTransformer {
     },
   };
 }
+
+export function transformerLineNumbers(): ShikiTransformer {
+  return {
+    name: 'ladoc:line-numbers',
+    pre(node) {
+      const raw = this.options.meta?.__raw;
+      if (!raw?.match(/(?:^|\s)lineNumbers(?:\s|$)/)) return;
+
+      this.addClassToHast(node, 'line-numbers');
+    },
+  };
+}
+
 function parseRangeString(rangeStr: string): number[] {
   const result: number[] = [];
   for (const part of rangeStr.split(',')) {
@@ -59,9 +72,7 @@ export function transformerMetaDiff(): ShikiTransformer {
   };
 }
 
-const renderer = rendererRich({
-})
-
+const renderer = rendererRich({});
 
 export const shiki_transformers = [
   transformerTwoslash({
@@ -69,6 +80,7 @@ export const shiki_transformers = [
     renderer,
   }),
   transformerTitle(), // title="src/index.ts"
+  transformerLineNumbers(),
   transformerMetaHighlight(), // {1,3}
   transformerMetaWordHighlight(), // /pattern/
   transformerMetaDiff(), // ins={3} del={1}
@@ -77,5 +89,4 @@ export const shiki_transformers = [
   transformerNotationWordHighlight(), // [!code word:xxx]
   transformerNotationFocus(), // [!code focus]
   transformerNotationErrorLevel(), // [!code error] / [!code warning]
-
 ];

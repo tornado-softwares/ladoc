@@ -17,6 +17,39 @@
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .ladoc-markdown {
+    padding: 1em 1em;
+    font-size: 15px;
+  }
+
+  .ladoc-markdown h1:not(.no-ladoc-markdown *) {
+    font-size: 1.75em;
+  }
+
+  .ladoc-markdown h2:not(.no-ladoc-markdown *) {
+    font-size: 1.4em;
+  }
+
+  .ladoc-markdown h3:not(.no-ladoc-markdown *) {
+    font-size: 1.2em;
+  }
+
+  .ladoc-markdown pre:not(.no-ladoc-markdown *) {
+    font-size: 13px;
+  }
+
+  .ladoc-markdown code:not(.no-ladoc-markdown *) {
+    font-size: 0.85em;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ladoc-markdown {
+    padding: 1.5em 2em;
+  }
+}
+
 .ladoc-markdown hr:not(.no-ladoc-markdown *) {
   display: block;
   height: var(--_ladoc-hr-height);
@@ -242,13 +275,12 @@
   margin: 1rem auto;
 }
 
-/*
-.ladoc-markdown pre:not(.no-ladoc-markdown *) code:not(.no-ladoc-markdown *)  {
+.ladoc-markdown pre.line-numbers:not(.no-ladoc-markdown *) code:not(.no-ladoc-markdown *) {
   counter-reset: step;
   counter-increment: step 0;
 }
 
-.ladoc-markdown pre:not(.no-ladoc-markdown *) code:not(.no-ladoc-markdown *)  .line::before {
+.ladoc-markdown pre.line-numbers:not(.no-ladoc-markdown *) code:not(.no-ladoc-markdown *) .line:not(.diff)::before {
   content: counter(step);
   counter-increment: step;
   margin-right: 1rem;
@@ -256,7 +288,6 @@
   text-align: right;
   opacity: 30%;
 }
-*/
 
 .ladoc-markdown pre:not(.no-ladoc-markdown *) {
   background: var(--_ladoc-color-card);
@@ -301,6 +332,7 @@
 .ladoc-markdown pre.shiki.has-title code {
   padding-top: 0.8em;
   display: block;
+  overflow-y: auto;
 }
 
 .ladoc-markdown pre.shiki .line.highlighted {
@@ -518,7 +550,6 @@
   margin: 3px 0 0 -1px;
   display: inline-block;
   z-index: 8;
-  box-shadow: var(--_ladoc-twoslash-popup-shadow);
   background: var(--_ladoc-twoslash-popup-bg);
   border: var(--_ladoc-hr-height) solid var(--_ladoc-twoslash-border-color);
   border-radius: var(--_ladoc-radius);
@@ -552,6 +583,7 @@
   display: flex;
   align-items: center;
   gap: 0.25em;
+  margin: 0;
   line-height: 1em;
 }
 

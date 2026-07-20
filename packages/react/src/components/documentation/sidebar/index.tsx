@@ -1,12 +1,10 @@
-
 /*
   AI Generated :(
   Needs more testing
 */
 
-
 import type { BaseHTMLAttributes, ReactNode } from 'react';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from '@ladoc/styles/components/documentation/sidebar/index.module.css';
 import type { TreeObject, Page, Category, Data } from '@ladoc/core/routing';
@@ -16,6 +14,8 @@ export interface DocumentationSidebarProps extends BaseHTMLAttributes<HTMLBaseEl
   currentPath?: string;
   hrefBuilder?: (path: string) => string;
   iconResolver?: (icon?: string) => ReactNode;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 const defaultHrefBuilder = (path: string) => path;
@@ -28,18 +28,33 @@ export function DocumentationSidebar({
   currentPath,
   hrefBuilder = defaultHrefBuilder,
   iconResolver = defaultIconResolver,
+  isOpen = false,
+  onClose,
   ...props
 }: DocumentationSidebarProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
-    <aside className={clsx(styles['sidebar'], className)} {...props}>
-      <nav className={styles['nav']}>
-        <SidebarTree nodes={tree} depth={1} currentPath={currentPath} hrefBuilder={hrefBuilder} iconResolver={iconResolver} />
-      </nav>
-      {children}
-    </aside>
+    <>
+      {isOpen && <div className={styles['overlay']} onClick={onClose} />}
+      <aside className={clsx(styles['sidebar'], isOpen && styles['sidebar-open'], className)} {...props}>
+        <nav className={styles['nav']}>
+          <SidebarTree nodes={tree} depth={1} currentPath={currentPath} hrefBuilder={hrefBuilder} iconResolver={iconResolver} onLinkClick={onClose} />
+        </nav>
+        {children}
+      </aside>
+    </>
   );
 }
-
 
 function getCategoryData(category: Category): Data | undefined {
   return category.children.find((c): c is Data => c.type === 'data' && c.id === '_data');
@@ -93,11 +108,11 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
-
 interface HrefContext {
   currentPath?: string;
   hrefBuilder: (path: string) => string;
   iconResolver: (icon?: string) => ReactNode;
+  onLinkClick?: () => void;
 }
 
 interface SidebarTreeProps extends HrefContext {
@@ -105,7 +120,7 @@ interface SidebarTreeProps extends HrefContext {
   depth: number;
 }
 
-function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver }: SidebarTreeProps) {
+function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver, onLinkClick }: SidebarTreeProps) {
   const sorted = useMemo(() => sortNodes(nodes), [nodes]);
 
   return (
@@ -119,10 +134,11 @@ function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver }: S
 
           return (
             <li key={node.id} className={styles['item']}>
-<a
+              <a
                 href={hrefBuilder(node.path)}
                 className={clsx(styles['link'], isActive && styles['active'])}
                 style={{ '--depth': depth } as React.CSSProperties}
+                onClick={onLinkClick}
               >
                 {icon && <span className={styles['icon']}>{icon}</span>}
                 <span className={styles['label']}>{resolveTitle(node.frontmatter.title, node.id)}</span>
@@ -140,6 +156,7 @@ function SidebarTree({ nodes, depth, currentPath, hrefBuilder, iconResolver }: S
               currentPath={currentPath}
               hrefBuilder={hrefBuilder}
               iconResolver={iconResolver}
+              onLinkClick={onLinkClick}
             />
           );
         }
@@ -155,19 +172,16 @@ interface CategoryItemProps extends HrefContext {
   depth: number;
 }
 
-function CategoryItem({ category, depth, currentPath, hrefBuilder, iconResolver }: CategoryItemProps) {
+function CategoryItem({ category, depth, currentPath, hrefBuilder, iconResolver, onLinkClick }: CategoryItemProps) {
   const indexPage = getCategoryIndex(category);
   const data = getCategoryData(category);
 
-  const title = data?.frontmatter?.title
-    ?? (indexPage ? resolveTitle(indexPage.frontmatter.title, category.id) : category.id);
+  const title = data?.frontmatter?.title ?? (indexPage ? resolveTitle(indexPage.frontmatter.title, category.id) : category.id);
 
   const iconName = data?.frontmatter?.icon ?? indexPage?.frontmatter?.icon;
   const icon = iconResolver(iconName);
 
-  const childNodes = category.children.filter(
-    (c) => c.type !== 'data' && !(c.type === 'page' && c.index === true)
-  );
+  const childNodes = category.children.filter((c) => c.type !== 'data' && !(c.type === 'page' && c.index === true));
 
   const hasChildren = childNodes.length > 0;
   const isIndexActive = indexPage ? indexPage.path === currentPath : false;
@@ -182,6 +196,7 @@ function CategoryItem({ category, depth, currentPath, hrefBuilder, iconResolver 
             href={hrefBuilder(indexPage.path)}
             className={clsx(styles['link'], styles['category-link'], isIndexActive && styles['active'])}
             style={{ '--depth': depth } as React.CSSProperties}
+            onClick={onLinkClick}
           >
             {icon && <span className={styles['icon']}>{icon}</span>}
             <span className={styles['label']}>{title}</span>
@@ -218,6 +233,7 @@ function CategoryItem({ category, depth, currentPath, hrefBuilder, iconResolver 
           currentPath={currentPath}
           hrefBuilder={hrefBuilder}
           iconResolver={iconResolver}
+          onLinkClick={onLinkClick}
         />
       )}
     </li>

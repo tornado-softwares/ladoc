@@ -32,9 +32,12 @@
 
   --_ladoc-font-weight-heading: var(--ladoc-font-weight-heading, 600);
 
+  --_ladoc-font-size-base: var(--ladoc-font-size-base, 16px);
   --_ladoc-font-size-h1: var(--ladoc-font-size-h1, 2em);
   --_ladoc-font-size-h2: var(--ladoc-font-size-h2, 1.6em);
   --_ladoc-font-size-h3: var(--ladoc-font-size-h3, 1.3em);
+  --_ladoc-font-size-small: var(--ladoc-font-size-small, 0.9em);
+  --_ladoc-font-size-tiny: var(--ladoc-font-size-tiny, 0.8em);
 
   --_ladoc-line-height: var(--ladoc-line-height, 1.6);
   --_ladoc-line-height-heading: var(--ladoc-line-height-heading, 1.25);
@@ -56,6 +59,9 @@
   --_ladoc-padding-blockquote: var(--ladoc-padding-blockquote, 0.5em 1em);
   --_ladoc-padding-root: var(--ladoc-padding-root, 1.5em 4em);
 
+  --_ladoc-mobile-breakpoint: var(--ladoc-mobile-breakpoint, 768px);
+  --_ladoc-tablet-breakpoint: var(--ladoc-tablet-breakpoint, 1024px);
+
   --_ladoc-radius: var(--ladoc-radius, 6px);
   --_ladoc-hr-height: var(--ladoc-hr-height, 1px);
   --_ladoc-underline-height: var(--ladoc-underline-height, 1px);
@@ -63,8 +69,6 @@
 
   --_ladoc-transition-duration: var(--ladoc-transition-duration, 200ms);
   --_ladoc-transition-timing: var(--ladoc-transition-timing, ease);
-
-
 
   --_ladoc-pre-font-size: var(--ladoc-pre-font-size, 0.9em);
   --_ladoc-pre-line-height: var(--ladoc-pre-line-height, 1.5);

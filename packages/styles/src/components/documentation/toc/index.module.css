@@ -13,8 +13,21 @@
   overflow-y: auto;
 }
 
+@media (max-width: 1024px) {
+  .default {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .default {
+    min-width: 220px;
+    padding: 3em 1.5em;
+  }
+}
+
 .title {
-    margin: 0 0 0.5em;
+  margin: 0 0 0.5em;
   font-size: 0.9em;
   font-weight: var(--_ladoc-font-weight-heading);
   color: var(--_ladoc-color-text);

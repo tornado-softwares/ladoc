@@ -3,6 +3,7 @@
 .default {
   color: var(--_ladoc-color-text);
   background-color: var(--_ladoc-color-background);
-  display: 'flex';
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }

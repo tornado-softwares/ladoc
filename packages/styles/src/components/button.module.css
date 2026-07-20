@@ -47,3 +47,11 @@
 .secondary:active {
   transform: scale(0.98);
 }
+
+@media (max-width: 768px) {
+  .default,
+  .secondary {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}

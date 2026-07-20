@@ -1,4 +1,4 @@
-import { renderMermaidSVG } from 'beautiful-mermaid';
+import { get_mermaid_svg } from '@/markdown/utils/mermaid';
 import type { MarkedExtension } from 'marked';
 
 export const marked_mermaid_plugin: MarkedExtension = {
@@ -6,12 +6,7 @@ export const marked_mermaid_plugin: MarkedExtension = {
     code({ text, lang }) {
       const [language] = lang?.split(' ') ?? [];
       if (language === 'mermaid') {
-        return renderMermaidSVG(text, {
-          transparent: true,
-          accent: 'var(--_ladoc-color-text-primary)',
-          bg: 'var(--_ladoc-color-background)',
-          fg: 'var(--_ladoc-color-text)',
-        });
+        return get_mermaid_svg(text);
       }
       return false;
     },

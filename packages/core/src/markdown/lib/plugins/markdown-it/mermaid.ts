@@ -1,5 +1,5 @@
 import type MarkdownIt from 'markdown-it';
-import { renderMermaidSVG } from 'beautiful-mermaid';
+import { get_mermaid_svg } from '@/markdown/utils/mermaid';
 
 export function markdown_it_mermaid_plugin(md: MarkdownIt) {
   const defaultFenceRenderer = md.renderer.rules.fence;
@@ -11,12 +11,7 @@ export function markdown_it_mermaid_plugin(md: MarkdownIt) {
     const [language] = info.split(/\s+/);
 
     if (language === 'mermaid') {
-      return renderMermaidSVG(token.content, {
-        transparent: true,
-        accent: 'var(--_ladoc-color-text-primary)',
-        bg: 'var(--_ladoc-color-background)',
-        fg: 'var(--_ladoc-color-text)',
-      });
+      return get_mermaid_svg(token.content);
     }
 
     if (defaultFenceRenderer) {

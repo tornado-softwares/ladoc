@@ -8,4 +8,40 @@
   border-bottom: 1px solid var(--_ladoc-color-muted);
   position: sticky;
   top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 2em;
+  gap: 1em;
+  z-index: 100;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--_ladoc-color-text);
+  cursor: pointer;
+  padding: 0.5em;
+  border-radius: var(--_ladoc-radius);
+  transition: background-color var(--_ladoc-transition-duration) var(--_ladoc-transition-timing);
+}
+
+.menu-toggle:hover {
+  background-color: var(--_ladoc-color-muted);
+}
+
+.menu-toggle:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .default {
+    padding: 0 1em;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

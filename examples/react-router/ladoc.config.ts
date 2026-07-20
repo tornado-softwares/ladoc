@@ -8,6 +8,6 @@ export default {
     default: './src/assets/content/default',
   },
   markdown: {
-    engine: 'marked',
+    engine: 'markdown-it',
   },
 } satisfies partial_ladoc_configuration;

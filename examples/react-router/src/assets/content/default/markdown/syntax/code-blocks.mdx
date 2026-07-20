@@ -1,6 +1,7 @@
 ---
 title: Code Block
 description: Learn the Markdown syntax about code blocks.
+order: 2
 ---
 
 # We all ugly to somebody
@@ -37,12 +38,12 @@ Add `title="..."` to display a filename or label above the block.
 
 ````md
 ```ts title="src/index.ts"
-console.log("Hello");
+console.log('Hello');
 ```
 ````
 
 ```ts title="src/index.ts"
-console.log("Hello");
+console.log('Hello');
 ```
 
 ### Line numbers
@@ -51,13 +52,13 @@ Add `lineNumbers` to show line numbers down the left side of the block.
 
 ````md
 ```ts lineNumbers
-const a = "123";
+const a = '123';
 console.log(a);
 ```
 ````
 
 ```ts lineNumbers
-const a = "123";
+const a = '123';
 console.log(a);
 ```
 
@@ -72,12 +73,12 @@ type Player = {
 };
 ```
 ````
+
 ```ts twoslash title="Test" lineNumbers
 type Player = {
   name: string;
 };
 ```
-
 
 ---
 
@@ -136,9 +137,9 @@ const added = true;
 // [!code -- ]
 const removed = false;
 // [!code error ]
-throw new Error("Oops");
+throw new Error('Oops');
 // [!code warning ]
-console.warn("Warning");
+console.warn('Warning');
 ```
 ````
 
@@ -152,21 +153,21 @@ const added = true;
 // [!code --]
 const removed = false;
 // [!code error]
-throw new Error("Oops");
+throw new Error('Oops');
 // [!code warning]
-console.warn("Warning");
+console.warn('Warning');
 ```
 
 Available annotations:
 
-| Annotation | Effect |
-|---|---|
-| `// [!code highlight]` | Highlights the next line |
-| `// [!code focus]` | Focuses the next line (dims the rest) |
-| `// [!code ++]` | Marks the next line as added (diff style) |
-| `// [!code --]` | Marks the next line as removed (diff style) |
-| `// [!code error]` | Marks the next line as an error |
-| `// [!code warning]` | Marks the next line as a warning |
+| Annotation             | Effect                                      |
+| ---------------------- | ------------------------------------------- |
+| `// [!code highlight]` | Highlights the next line                    |
+| `// [!code focus]`     | Focuses the next line (dims the rest)       |
+| `// [!code ++]`        | Marks the next line as added (diff style)   |
+| `// [!code --]`        | Marks the next line as removed (diff style) |
+| `// [!code error]`     | Marks the next line as an error             |
+| `// [!code warning]`   | Marks the next line as a warning            |
 
 ### Annotating a range of lines
 
@@ -240,28 +241,28 @@ const b = 2;
 ```ts
 // [!code error:2 ]
 const a = 1;
-throw new Error("Boom");
+throw new Error('Boom');
 ```
 ````
 
 ```ts
 // [!code error:2]
 const a = 1;
-throw new Error("Boom");
+throw new Error('Boom');
 ```
 
 ````md
 ```ts
 // [!code warning:2 ]
 const a = 1;
-console.warn("Deprecated");
+console.warn('Deprecated');
 ```
 ````
 
 ```ts
 // [!code warning:2]
 const a = 1;
-console.warn("Deprecated");
+console.warn('Deprecated');
 ```
 
 ---
@@ -276,17 +277,16 @@ Place `// ^?` under an identifier to show its inferred type.
 
 ````md
 ```ts twoslash
-const a = "123";
+const a = '123';
 console.log(a);
 //     ^?
 ```
 ````
 
 ```ts twoslash
-const a = "123";
+const a = '123';
 console.log(a);
 //          ^?
-
 ```
 
 ### Showing compiler errors with `@errors`
@@ -296,14 +296,14 @@ Use the `@errors` directive to display specific TypeScript error codes inline in
 ````md
 ```ts twoslash
 // @errors: 2588
-const a = "123";
+const a = '123';
 a = 132;
 ```
 ````
 
 ```ts twoslash
 // @errors: 2588
-const a = "123";
+const a = '123';
 a = 132;
 ```
 
@@ -311,8 +311,8 @@ a = 132;
 
 Use `// ^|` to simulate an editor completion popup at a given position, and `// @noErrors` to suppress errors caused by the incomplete snippet.
 
-````md
-```ts twoslash title="Test" lineNumbers
+`````md
+````ts twoslash title="Test" lineNumbers
 type Player = {
   /**
    * The player name
@@ -328,12 +328,12 @@ type Player = {
 // @noErrors
 console.g;
 //       ^|
-const player: Player = { name: "Hello World" };
+const player: Player = { name: 'Hello World' };
 //    ^?
-```
 ````
+`````
 
-```ts twoslash title="Test" lineNumbers
+````ts twoslash title="Test" lineNumbers
 type Player = {
   /**
    * The player name
@@ -349,15 +349,10 @@ type Player = {
 // @noErrors
 console.g;
 //       ^|
-
-
-
 
 const player: Player = { name: 'Hello World' };
 //    ^?
-
-
-```
+````
 
 > `---cut---` hides everything above it from the rendered output, which is handy for setting up types or imports without cluttering the example.
 

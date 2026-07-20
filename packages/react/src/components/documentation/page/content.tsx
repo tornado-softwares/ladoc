@@ -1,5 +1,6 @@
 import { use } from 'react';
 import '@ladoc/styles/markdown.css';
+import '@ladoc/styles/katex.css';
 import { run } from '@mdx-js/mdx';
 import * as runtime from 'react/jsx-runtime';
 import type { MDXComponents } from 'mdx/types';

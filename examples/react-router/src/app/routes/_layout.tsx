@@ -1,4 +1,4 @@
-import { DocumentationHeader, DocumentationLayout } from '@ladoc/react';
+import { DocumentationLayout, ConnectedDocumentationHeader } from '@ladoc/react';
 import type { Route } from './+types/_index';
 import { Outlet } from 'react-router';
 
@@ -9,7 +9,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Layout() {
   return (
     <DocumentationLayout>
-      <DocumentationHeader />
+      <ConnectedDocumentationHeader />
       <Outlet />
     </DocumentationLayout>
   );
