@@ -72,7 +72,7 @@ export function transformerMetaDiff(): ShikiTransformer {
   };
 }
 
-const renderer = rendererRich({});
+const renderer = rendererRich();
 
 export const shiki_transformers = [
   transformerTwoslash({

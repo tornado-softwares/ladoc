@@ -119,11 +119,19 @@
   color: var(--_ladoc-color-muted-foreground);
 }
 
-.ladoc-markdown li:not(.no-ladoc-markdown *)::before {
-  content: '';
-  margin-inline: var(--_ladoc-margin-li-before);
+.ladoc-markdown li:not(.no-ladoc-markdown *) > p:first-child {
+  margin-top: 0;
+  margin-bottom: 0;
 }
-
+.ladoc-markdown li:not(.no-ladoc-markdown *) > p:last-child {
+  margin-bottom: 0;
+}
+.ladoc-markdown ul:not(.no-ladoc-markdown *) > li {
+  list-style-type: disc;
+}
+.ladoc-markdown ol:not(.no-ladoc-markdown *) > li {
+  list-style-type: decimal;
+}
 .ladoc-markdown p:not(.no-ladoc-markdown *) > pre {
   background: var(--_ladoc-color-card);
   padding: var(--_ladoc-padding-pre);
@@ -332,7 +340,7 @@
 .ladoc-markdown pre.shiki.has-title code {
   padding-top: 0.8em;
   display: block;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 
 .ladoc-markdown pre.shiki .line.highlighted {
@@ -539,6 +547,13 @@
 /* --- Completions --- */
 .ladoc-markdown .twoslash .twoslash-completion-cursor:not(.no-ladoc-markdown *) {
   position: relative;
+}
+
+.ladoc-markdown .twoslash svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5em auto;
 }
 
 .ladoc-markdown .twoslash .twoslash-completion-cursor .twoslash-completion-list {
