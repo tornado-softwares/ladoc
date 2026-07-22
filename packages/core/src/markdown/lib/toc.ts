@@ -49,15 +49,19 @@ export const extract_toc = (input: string) => {
   const toc: toc = [];
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
+    let start_index = 0;
+    while (line.length > start_index && line[start_index] != '#') {
+      start_index += 1;
+    }
     if (
-      line.startsWith('# ') ||
-      line.startsWith('## ') ||
-      line.startsWith('### ') ||
-      line.startsWith('#### ') ||
-      line.startsWith('##### ') ||
-      line.startsWith('###### ')
+      line.startsWith('# ', start_index) ||
+      line.startsWith('## ', start_index) ||
+      line.startsWith('### ', start_index) ||
+      line.startsWith('#### ', start_index) ||
+      line.startsWith('##### ', start_index) ||
+      line.startsWith('###### ', start_index)
     ) {
-      const data = parse_header_content(line);
+      const data = parse_header_content(line.slice(start_index));
       if (data) {
         const { user_slugged, ...toc_item } = data;
         toc.push(toc_item);
@@ -69,7 +73,6 @@ export const extract_toc = (input: string) => {
   }
   return { toc, markdown: lines.join('\n') };
 };
-
 /*
 console.log(
   extract_toc(`
@@ -80,60 +83,11 @@ console.log(
 
 #### [Bruhh [Neww]](#hey)
 
-
-# Markdown: Syntax
-
-*   [Overview](#overview)
-    *   [Philosophy](#philosophy)
-    *   [Inline HTML](#html)
-    *   [Automatic Escaping for Special Characters](#autoescape)
-*   [Block Elements](#block)
-    *   [Paragraphs and Line Breaks](#p)
-    *   [Headers](#header)
-    *   [Blockquotes](#blockquote)
-    *   [Lists](#list)
-    *   [Code Blocks](#precode)
-    *   [Horizontal Rules](#hr)
-*   [Span Elements](#span)
-    *   [Links](#link)
-    *   [Emphasis](#em)
-    *   [Code](#code)
-    *   [Images](#img)
-*   [Miscellaneous](#misc)
-    *   [Backslash Escapes](#backslash)
-    *   [Automatic Links](#autolink)
-
-
-**Note:** This document is itself written using Markdown; you
-can [see the source for it by adding '.text' to the URL](/projects/markdown/syntax.text).
-
-----
-
-## [Overview](#Damnn)
-
-### Philosophy
-
-Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
-
-Readability, however, is emphasized above all else. A Markdown-formatted
-document should be publishable as-is, as plain text, without looking
-like it's been marked up with tags or formatting instructions. While
-Markdown's syntax has been influenced by several existing text-to-HTML
-filters -- including [Setext](http://docutils.sourceforge.net/mirror/setext.html), [atx](http://www.aaronsw.com/2002/atx/), [Textile](http://textism.com/tools/textile/), [reStructuredText](http://docutils.sourceforge.net/rst.html),
-[Grutatext](http://www.triptico.com/software/grutatxt.html), and [EtText](http://ettext.taint.org/doc/) -- the single biggest source of
-inspiration for Markdown's syntax is the format of plain text email.
-
-## Block Elements
-
-### Paragraphs and Line Breaks
-
-A paragraph is simply one or more consecutive lines of text, separated
-by one or more blank lines. (A blank line is any line that looks like a
-blank line -- a line containing nothing but spaces or tabs is considered
-blank.) Normal paragraphs should not be indented with spaces or tabs.
-
-The implication of the "one or more consecutive lines of text" rule is
-
+> #### [Bruhh [Neww]](#hey)
+- # [AAAA](#hey)
+  - AH
+    - ## BBB
+> # Fuck
   `)
 );
 */

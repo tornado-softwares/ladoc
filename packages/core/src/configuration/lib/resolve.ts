@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { get_root_dir } from '@/shared/utils/root';
 import type { parsed_ladoc_configuration } from '../types/configuration';
+import z from 'zod';
 
 let cache: parsed_ladoc_configuration | undefined;
 let cache_mtime: number | undefined;
@@ -13,8 +14,8 @@ export const get_configuration = async () => {
   const mtime = fs.existsSync(file_path) ? fs.statSync(file_path).mtimeMs : undefined;
   if (!cache || cache_mtime !== mtime) {
     cache = await load_configuration();
-    cache.logger.debug(cache_mtime ? 'cached ladoc configuration.' : "refreshed ladoc configuration.");
-    cache_mtime = mtime
+    cache.logger.debug(cache_mtime ? 'cached ladoc configuration.' : 'refreshed ladoc configuration.');
+    cache_mtime = mtime;
   }
   return cache;
 };
@@ -25,7 +26,12 @@ const load_configuration = async (): Promise<parsed_ladoc_configuration> => {
   if (fs.existsSync(file_path)) {
     const mod = await import(/* @vite-ignore */ `${file_path}?t=${Date.now()}`);
     if ('default' in mod && typeof mod.default == 'object') {
-      return configuration_schema.parse(mod.default);
+      const { data: configuration, error } = configuration_schema.safeParse(mod.default);
+      if (error) {
+        console.error('Your ladoc configuration contains incorrect information.');
+        throw new Error(z.prettifyError(error));
+      }
+      return configuration;
     }
   }
   return configuration_schema.parse({});

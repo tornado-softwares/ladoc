@@ -1,7 +1,7 @@
 import type { MarkedExtension } from 'marked';
 import { codeToHtml, type BundledLanguage, type ShikiTransformer } from 'shiki';
-import { shiki_theme } from '../../shiki/theme';
-import { shiki_transformers } from '../../shiki/transformers';
+import { shiki_theme } from '../../../utils/shiki/theme';
+import { shiki_transformers } from '../../../utils/shiki/transformers';
 
 export const marked_shiki_plugin: MarkedExtension = {
   async: true,

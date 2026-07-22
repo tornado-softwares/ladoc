@@ -1,7 +1,10 @@
 import { parse as parse_yaml } from 'yaml';
 import z from 'zod';
 
-export const extract_frontmatter = <FrontmatterSchema extends z.ZodTypeAny>(input: string, schema:FrontmatterSchema): { frontmatter: z.infer<FrontmatterSchema>; markdown: string } => {
+export const extract_frontmatter = <FrontmatterSchema extends z.ZodTypeAny>(
+  input: string,
+  schema: FrontmatterSchema
+): { frontmatter: z.infer<FrontmatterSchema>; markdown: string } => {
   const lines = input.split('\n');
   let start_index: number | undefined = undefined;
   let end_index: number | undefined = undefined;

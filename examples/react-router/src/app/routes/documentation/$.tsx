@@ -3,12 +3,18 @@ import pages from 'virtual:ladoc:pages';
 import type { Route } from './+types/$';
 import { Suspense } from 'react';
 import { Button, DocumentationSidebarContent, DocumentationToc, PageContent, PageHeader } from '@ladoc/react';
+import { get_page } from '@ladoc/server';
+
+export function meta({ params, loaderData }: Route.MetaArgs) {
+  if (loaderData) {
+    return [{ title: loaderData.language }, { name: 'description', content: 'This is a React Router website.' }];
+  }
+}
 
 export async function loader({ params }: Route.LoaderArgs) {
-  const { get_page } = await import('@ladoc/server');
   const page = await get_page('/' + params['*']);
   if (!page) throw data(null, { status: 404 });
-  return { language: page.language, path: page.path };
+  return page;
 }
 
 export default function Page({ params, loaderData: { language, path } }: Route.ComponentProps) {

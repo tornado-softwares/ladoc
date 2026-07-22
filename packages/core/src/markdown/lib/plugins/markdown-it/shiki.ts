@@ -1,5 +1,5 @@
-import { shiki_theme } from '../../shiki/theme';
-import { shiki_transformers } from '../../shiki/transformers';
+import { shiki_theme } from '../../../utils/shiki/theme';
+import { shiki_transformers } from '../../../utils/shiki/transformers';
 import { codeToHtml } from 'shiki';
 import type { BundledLanguage } from 'shiki/bundle/web';
 import type { MarkdownItAsync } from 'markdown-it-async';

@@ -8,4 +8,3 @@ export const TREE_VIRTUAL_MODULE = 'virtual:ladoc:tree';
 
 export const ROOT = get_root_dir();
 export const CONFIGURATION: parsed_ladoc_configuration = await get_configuration();
-console.log(CONFIGURATION);

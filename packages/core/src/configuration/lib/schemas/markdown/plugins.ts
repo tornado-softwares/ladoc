@@ -1,13 +1,13 @@
-import z from "zod";
+import z from 'zod';
 
 export const plugins_schema = z
   .object({
-    syntax_highlighting: z.boolean().default(true),
+    syntax_highlighting: z.boolean().default(false),
     mermaid: z.boolean().default(false),
-    latex: z.boolean().default(true),
+    latex: z.boolean().default(false),
   })
   .default({
-    syntax_highlighting: true,
+    syntax_highlighting: false,
     mermaid: false,
-    latex: true,
+    latex: false,
   });

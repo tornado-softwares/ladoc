@@ -7,13 +7,8 @@ import { parse_header_content } from '@/markdown/lib/toc';
 export const remark_anchors_plugin: Plugin = () => {
   return (tree) => {
     visit(tree, 'heading', (node: Heading) => {
-      const text = " "+toString(node);
-
+      const text = ' ' + toString(node);
       const data = parse_header_content(text);
-      console.log({
-        text,
-        data
-      });
       if (data) {
         node.data ??= {};
         node.data.hProperties = {
